@@ -9,7 +9,7 @@ import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
-import { MailIcon, PhoneIcon, MapPinIcon } from "lucide-react"
+import { MailIcon, PhoneIcon, MapPinIcon, SendIcon } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { useEffect, useRef } from "react"
 
@@ -281,7 +281,12 @@ export default function Index() {
                 {
                   icon: PhoneIcon,
                   label: "Телефон",
-                  value: "+7 (949) 000-00-00",
+                  value: "+7 949 430 5174",
+                },
+                {
+                  icon: SendIcon,
+                  label: "Telegram",
+                  value: "@vadimbG80",
                 },
                 {
                   icon: MailIcon,
