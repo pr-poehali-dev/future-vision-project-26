@@ -16,8 +16,8 @@ const RECIPIENTS = [
     bankBg: "bg-yellow-400/20 border-yellow-400/30",
     btnColor: "bg-yellow-400 hover:bg-yellow-300 text-black",
     emoji: "🥃",
-    label: "Официант",
-    hint: "Если вам понравилось обслуживание — поблагодарите официанта.",
+    label: "Бармен",
+    hint: "Если вам понравилось обслуживание — поблагодарите бармена.",
   },
   {
     id: "hookah",
