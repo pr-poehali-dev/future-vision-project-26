@@ -155,7 +155,7 @@ export default function Index() {
         className="relative z-10 flex h-screen w-full overflow-x-auto overflow-y-hidden scroll-smooth snap-x snap-mandatory hide-scrollbar"
         style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
       >
-        <section id="home" className="flex min-w-full snap-start items-center justify-center px-4 py-20 relative">
+        <section id="home" className="flex min-w-full snap-start items-center justify-center px-4 py-16 md:py-20 relative">
           <div className="absolute inset-0 z-0">
             <img
               src="https://cdn.poehali.dev/projects/842b0b6f-f1be-4985-aa20-a468d555c6e1/files/4bccf198-b008-450e-ad52-d6d72ed0a280.jpg"
@@ -163,22 +163,22 @@ export default function Index() {
               className="w-full h-full object-cover opacity-30"
             />
           </div>
-          <div className="mx-auto max-w-4xl relative z-10">
-            <div className="text-center px-0 leading-5">
-              <h1 className="mb-8 text-balance text-5xl tracking-tight text-white [text-shadow:_0_4px_20px_rgb(0_0_0_/_60%)] md:text-6xl lg:text-8xl">
+          <div className="mx-auto max-w-4xl relative z-10 w-full">
+            <div className="text-center px-2">
+              <h1 className="mb-5 text-balance text-4xl sm:text-5xl tracking-tight text-white [text-shadow:_0_4px_20px_rgb(0_0_0_/_60%)] md:text-6xl lg:text-8xl">
                 <span className="font-open-sans-custom not-italic">Lounge</span>{" "}
                 <span className="font-serif italic">Bar</span>{" "}
                 <span className="font-open-sans-custom not-italic">G80</span>
               </h1>
 
-              <p className="mb-8 mx-auto max-w-2xl text-pretty leading-relaxed text-gray-300 [text-shadow:_0_2px_10px_rgb(0_0_0_/_50%)] font-thin font-open-sans-custom tracking-wide text-xl">
+              <p className="mb-8 mx-auto max-w-lg text-pretty leading-relaxed text-gray-300 [text-shadow:_0_2px_10px_rgb(0_0_0_/_50%)] font-thin font-open-sans-custom tracking-wide text-base md:text-xl">
                 Авторские коктейли, кальяны и живая атмосфера —{" "}
                 <span className="font-serif italic">в самом сердце Донецка</span>
               </p>
 
-              <div className="flex justify-center gap-4 flex-wrap">
+              <div className="flex justify-center">
                 <ShinyButton
-                  className="px-8 py-3 text-base cursor-pointer"
+                  className="px-6 py-3 text-sm md:text-base cursor-pointer"
                   onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "start" })}
                 >
                   Забронировать стол
@@ -188,8 +188,7 @@ export default function Index() {
           </div>
         </section>
 
-
-        <section id="features" className="flex min-w-full snap-start items-center justify-center px-4 py-20">
+        <section id="features" className="flex min-w-full snap-start items-center justify-center px-3 md:px-4 py-16 md:py-20">
           <div className="mx-auto max-w-7xl w-full">
             <Feature />
           </div>
@@ -198,7 +197,7 @@ export default function Index() {
         <section
           id="pricing"
           ref={pricingSectionRef}
-          className="relative min-w-full snap-start overflow-y-auto px-4 pt-24 pb-20 hide-scrollbar"
+          className="relative min-w-full snap-start overflow-y-auto px-3 md:px-4 pt-20 md:pt-24 pb-16 md:pb-20 hide-scrollbar"
           style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
         >
           <div
@@ -213,7 +212,7 @@ export default function Index() {
 
           <div className="relative z-10 mx-auto w-full max-w-5xl">
             <div className="mx-auto mb-10 max-w-2xl text-center">
-              <h1 className="text-4xl font-extrabold tracking-tight lg:text-6xl text-white [text-shadow:_0_4px_20px_rgb(0_0_0_/_60%)] font-open-sans-custom">
+              <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight lg:text-6xl text-white [text-shadow:_0_4px_20px_rgb(0_0_0_/_60%)] font-open-sans-custom">
                 Напитки и кальяны
               </h1>
               <p className="text-gray-300 mt-4 text-sm md:text-base font-open-sans-custom [text-shadow:_0_2px_10px_rgb(0_0_0_/_50%)]">
@@ -227,7 +226,7 @@ export default function Index() {
         <section
           id="about"
           ref={aboutSectionRef}
-          className="relative min-w-full snap-start overflow-y-auto px-4 pt-24 pb-20 hide-scrollbar"
+          className="relative min-w-full snap-start overflow-y-auto px-3 md:px-4 pt-20 md:pt-24 pb-16 md:pb-20 hide-scrollbar"
           style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
         >
           <div
@@ -242,7 +241,7 @@ export default function Index() {
 
           <div className="relative z-10 mx-auto w-full max-w-7xl">
             <div className="mx-auto mb-10 max-w-2xl text-center">
-              <h1 className="text-4xl font-extrabold tracking-tight lg:text-6xl text-white [text-shadow:_0_4px_20px_rgb(0_0_0_/_60%)] font-open-sans-custom">
+              <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight lg:text-6xl text-white [text-shadow:_0_4px_20px_rgb(0_0_0_/_60%)] font-open-sans-custom">
                 О баре G80
               </h1>
               <p className="text-gray-300 mt-4 text-sm md:text-base font-open-sans-custom [text-shadow:_0_2px_10px_rgb(0_0_0_/_50%)]">
@@ -256,7 +255,7 @@ export default function Index() {
         <section
           id="contact"
           ref={contactSectionRef}
-          className="relative min-w-full snap-start overflow-y-auto px-4 pt-24 pb-20"
+          className="relative min-w-full snap-start overflow-y-auto px-3 md:px-4 pt-20 md:pt-24 pb-16 md:pb-20"
         >
           <div
             aria-hidden="true"

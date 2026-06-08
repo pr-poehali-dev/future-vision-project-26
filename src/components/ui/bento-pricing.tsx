@@ -25,18 +25,18 @@ function MenuCard({ titleBadge, items, className, featured }: MenuCardProps) {
           {titleBadge}
         </Badge>
         {featured && (
-          <Badge variant="outline" className="hidden lg:flex bg-white/5 text-white border-white/20 font-open-sans-custom text-xs">
+          <Badge variant="outline" className="bg-white/5 text-white border-white/20 font-open-sans-custom text-xs">
             <SparklesIcon className="me-1 size-3" /> Топ
           </Badge>
         )}
       </div>
-      <ul className="text-gray-300 grid gap-2 p-3 text-xs font-open-sans-custom">
+      <ul className="text-gray-300 grid gap-2.5 p-3 text-sm font-open-sans-custom">
         {items.map((item, i) => (
           <li key={i} className="flex items-start gap-2">
-            <span className="text-white mt-0.5">🍸</span>
+            <span className="text-white mt-0.5 flex-shrink-0">🍸</span>
             <span>
               <span className="text-white font-medium">{item.name}</span>
-              {item.desc && <span className="text-gray-400"> — {item.desc}</span>}
+              {item.desc && <span className="text-gray-400 text-xs"> — {item.desc}</span>}
             </span>
           </li>
         ))}
@@ -47,9 +47,9 @@ function MenuCard({ titleBadge, items, className, featured }: MenuCardProps) {
 
 export function BentoPricing() {
   return (
-    <div className="grid grid-cols-1 gap-1.5 md:grid-cols-2 lg:grid-cols-8">
+    <div className="flex flex-col gap-3 lg:grid lg:grid-cols-8 lg:gap-1.5">
 
-      {/* Авторские коктейли — большая карточка */}
+      {/* Авторские коктейли */}
       <div
         className={cn(
           "bg-white/5 border-white/10 relative w-full overflow-hidden rounded-md border-2",
@@ -74,41 +74,27 @@ export function BentoPricing() {
           <Badge variant="secondary" className="bg-white/10 text-white border-white/20 font-open-sans-custom text-xs">
             АВТОРСКИЕ КОКТЕЙЛИ
           </Badge>
-          <Badge variant="outline" className="hidden lg:flex bg-white/5 text-white border-white/20 font-open-sans-custom text-xs">
+          <Badge variant="outline" className="bg-white/5 text-white border-white/20 font-open-sans-custom text-xs">
             <SparklesIcon className="me-1 size-3" /> Хиты бара
           </Badge>
         </div>
-        <div className="flex flex-col p-3 lg:flex-row gap-4">
-          <ul className="text-gray-300 grid gap-2 text-xs lg:w-[50%] font-open-sans-custom">
-            {[
-              { name: "Lavande Spritz", desc: "лаванда, просекко, лимон" },
-              { name: "Cyan Lagoon", desc: "голубой кюрасао, лайм, тоник" },
-              { name: "Milk Punch", desc: "молоко, ром, ваниль, специи" },
-            ].map((item, i) => (
-              <li key={i} className="flex items-start gap-2">
-                <span className="text-white mt-0.5">🍸</span>
-                <span>
-                  <span className="text-white font-medium">{item.name}</span>
-                  <span className="text-gray-400"> — {item.desc}</span>
-                </span>
-              </li>
-            ))}
-          </ul>
-          <ul className="text-gray-300 grid gap-2 text-xs lg:w-[50%] font-open-sans-custom">
-            {[
-              { name: "G80 Heart", desc: "малина, роза, джин, личи" },
-              { name: "Donbass", desc: "авторский коктейль бара" },
-            ].map((item, i) => (
-              <li key={i} className="flex items-start gap-2">
-                <span className="text-white mt-0.5">🍸</span>
-                <span>
-                  <span className="text-white font-medium">{item.name}</span>
-                  <span className="text-gray-400"> — {item.desc}</span>
-                </span>
-              </li>
-            ))}
-          </ul>
-        </div>
+        <ul className="text-gray-300 grid grid-cols-1 sm:grid-cols-2 gap-2.5 p-3 text-sm font-open-sans-custom">
+          {[
+            { name: "Lavande Spritz", desc: "лаванда, просекко, лимон" },
+            { name: "Cyan Lagoon", desc: "голубой кюрасао, лайм, тоник" },
+            { name: "Milk Punch", desc: "молоко, ром, ваниль, специи" },
+            { name: "G80 Heart", desc: "малина, роза, джин, личи" },
+            { name: "Donbass", desc: "авторский коктейль бара" },
+          ].map((item, i) => (
+            <li key={i} className="flex items-start gap-2">
+              <span className="text-white mt-0.5 flex-shrink-0">🍸</span>
+              <span>
+                <span className="text-white font-medium">{item.name}</span>
+                <span className="text-gray-400 text-xs"> — {item.desc}</span>
+              </span>
+            </li>
+          ))}
+        </ul>
       </div>
 
       {/* Классические коктейли */}
@@ -180,28 +166,28 @@ export function BentoPricing() {
           <Badge variant="secondary" className="bg-white/10 text-white border-white/20 font-open-sans-custom text-xs">
             КАЛЬЯНЫ
           </Badge>
-          <Badge variant="outline" className="hidden lg:flex bg-white/5 text-white border-white/20 font-open-sans-custom text-xs">
+          <Badge variant="outline" className="bg-white/5 text-white border-white/20 font-open-sans-custom text-xs">
             <SparklesIcon className="me-1 size-3" /> Премиум доступен
           </Badge>
         </div>
-        <div className="flex flex-col p-3 lg:flex-row gap-4">
-          <div className="lg:w-[50%]">
+        <div className="grid grid-cols-2 gap-4 p-3">
+          <div>
             <p className="text-white text-xs font-semibold font-open-sans-custom mb-2">🌿 Обычные</p>
-            <ul className="text-gray-300 grid gap-2 text-xs font-open-sans-custom">
+            <ul className="text-gray-300 grid gap-2 text-sm font-open-sans-custom">
               {["Два Яблока", "Виноград Мята", "Арбуз", "Клубника Банан", "Лесные ягоды"].map((name, i) => (
                 <li key={i} className="flex items-center gap-2">
-                  <span className="text-white">💨</span>
+                  <span className="text-white flex-shrink-0">💨</span>
                   <span>{name}</span>
                 </li>
               ))}
             </ul>
           </div>
-          <div className="lg:w-[50%]">
+          <div>
             <p className="text-white text-xs font-semibold font-open-sans-custom mb-2">✨ Премиум</p>
-            <ul className="text-gray-300 grid gap-2 text-xs font-open-sans-custom">
+            <ul className="text-gray-300 grid gap-2 text-sm font-open-sans-custom">
               {["Белый виноград на молоке", "Тропический коктейль", "Чёрная смородина на льду", "Роза лаванда", "Экзотические фрукты"].map((name, i) => (
                 <li key={i} className="flex items-center gap-2">
-                  <span className="text-white">⭐</span>
+                  <span className="text-white flex-shrink-0">⭐</span>
                   <span>{name}</span>
                 </li>
               ))}
@@ -210,7 +196,7 @@ export function BentoPricing() {
         </div>
       </div>
 
-      {/* Пиво и напитки */}
+      {/* Пиво, вина и напитки */}
       <div
         className={cn(
           "bg-white/5 border-white/10 relative w-full overflow-hidden rounded-md border-2",
@@ -224,36 +210,36 @@ export function BentoPricing() {
             ПИВО, ВИНА И НАПИТКИ
           </Badge>
         </div>
-        <div className="flex flex-col p-3 lg:flex-row gap-6">
-          <div className="lg:w-[25%]">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-3">
+          <div>
             <p className="text-white text-xs font-semibold font-open-sans-custom mb-2">🍺 Пиво</p>
-            <ul className="text-gray-300 grid gap-1.5 text-xs font-open-sans-custom">
+            <ul className="text-gray-300 grid gap-2 text-sm font-open-sans-custom">
               {["Corona", "Bud", "Tuborg", "Hoegaarden", "Балтика 0"].map((name, i) => (
-                <li key={i} className="flex items-center gap-2"><span>🍺</span><span>{name}</span></li>
+                <li key={i} className="flex items-center gap-1.5"><span>🍺</span><span>{name}</span></li>
               ))}
             </ul>
           </div>
-          <div className="lg:w-[25%]">
-            <p className="text-white text-xs font-semibold font-open-sans-custom mb-2">🥂 Шампанское и вина</p>
-            <ul className="text-gray-300 grid gap-1.5 text-xs font-open-sans-custom">
+          <div>
+            <p className="text-white text-xs font-semibold font-open-sans-custom mb-2">🥂 Вина</p>
+            <ul className="text-gray-300 grid gap-2 text-sm font-open-sans-custom">
               {["Просекко", "Асти", "Белое сухое", "Красное полусладкое", "Розовое"].map((name, i) => (
-                <li key={i} className="flex items-center gap-2"><span>🥂</span><span>{name}</span></li>
+                <li key={i} className="flex items-center gap-1.5"><span>🥂</span><span>{name}</span></li>
               ))}
             </ul>
           </div>
-          <div className="lg:w-[25%]">
+          <div>
             <p className="text-white text-xs font-semibold font-open-sans-custom mb-2">⚡ Энергетики</p>
-            <ul className="text-gray-300 grid gap-1.5 text-xs font-open-sans-custom">
+            <ul className="text-gray-300 grid gap-2 text-sm font-open-sans-custom">
               {["Red Bull", "Monster", "Gorilla", "Adrenaline Rush"].map((name, i) => (
-                <li key={i} className="flex items-center gap-2"><span>⚡</span><span>{name}</span></li>
+                <li key={i} className="flex items-center gap-1.5"><span>⚡</span><span>{name}</span></li>
               ))}
             </ul>
           </div>
-          <div className="lg:w-[25%]">
-            <p className="text-white text-xs font-semibold font-open-sans-custom mb-2">🥤 Прохладительные и снэки</p>
-            <ul className="text-gray-300 grid gap-1.5 text-xs font-open-sans-custom">
+          <div>
+            <p className="text-white text-xs font-semibold font-open-sans-custom mb-2">🥤 Напитки и снэки</p>
+            <ul className="text-gray-300 grid gap-2 text-sm font-open-sans-custom">
               {["Coca-Cola", "Fanta", "Sprite", "Орешки", "Сыр косичка", "Чипсы"].map((name, i) => (
-                <li key={i} className="flex items-center gap-2"><span>🥤</span><span>{name}</span></li>
+                <li key={i} className="flex items-center gap-1.5"><span>🥤</span><span>{name}</span></li>
               ))}
             </ul>
           </div>
