@@ -26,9 +26,10 @@ export function FloatingNavbar() {
         <div className="flex items-center justify-between">
           <button onClick={() => scrollToSection("home")} className="cursor-pointer">
             <img
-              src="https://cdn.poehali.dev/projects/842b0b6f-f1be-4985-aa20-a468d555c6e1/bucket/868dfe29-9c0d-4149-b0c2-9ccd246d7520.jpg"
+              src="https://cdn.poehali.dev/projects/842b0b6f-f1be-4985-aa20-a468d555c6e1/files/67c83e85-00b1-4a8d-aded-c5bed83991a1.jpg"
               alt="G80"
-              className="h-9 md:h-11 w-auto object-contain rounded-md mix-blend-lighten"
+              className="h-9 md:h-11 w-auto object-contain mix-blend-lighten"
+              style={{ filter: "drop-shadow(0 0 8px rgba(100,180,255,0.8))" }}
             />
           </button>
 
