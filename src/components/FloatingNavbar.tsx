@@ -25,10 +25,11 @@ export function FloatingNavbar() {
       <div className="mx-auto max-w-7xl rounded-2xl border-2 border-white/10 bg-white/5 px-4 py-3 backdrop-blur-sm md:px-6 md:py-4">
         <div className="flex items-center justify-between">
           <button onClick={() => scrollToSection("home")} className="cursor-pointer">
-            <div className="flex items-center gap-2 text-white [text-shadow:_0_2px_8px_rgb(0_0_0_/_40%)]">
-              <span className="text-xl md:text-2xl">🥃</span>
-              <span className="font-semibold text-base md:text-lg font-open-sans-custom tracking-tight">G80</span>
-            </div>
+            <img
+              src="https://cdn.poehali.dev/projects/842b0b6f-f1be-4985-aa20-a468d555c6e1/bucket/868dfe29-9c0d-4149-b0c2-9ccd246d7520.jpg"
+              alt="G80"
+              className="h-9 md:h-11 w-auto object-contain rounded-md mix-blend-lighten"
+            />
           </button>
 
           {/* Desktop nav */}

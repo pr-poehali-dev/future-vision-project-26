@@ -246,6 +246,13 @@ export default function Index() {
           </div>
           <div className="mx-auto max-w-4xl relative z-10 w-full">
             <div className="text-center px-2">
+              <div className="flex justify-center mb-4">
+                <img
+                  src="https://cdn.poehali.dev/projects/842b0b6f-f1be-4985-aa20-a468d555c6e1/bucket/868dfe29-9c0d-4149-b0c2-9ccd246d7520.jpg"
+                  alt="G80"
+                  className="h-28 md:h-40 w-auto object-contain mix-blend-lighten drop-shadow-2xl"
+                />
+              </div>
               <h1 className="mb-5 text-balance text-4xl sm:text-5xl tracking-tight text-white [text-shadow:_0_4px_20px_rgb(0_0_0_/_60%)] md:text-6xl lg:text-8xl">
                 <span className="font-open-sans-custom not-italic">Lounge</span>{" "}
                 <span className="font-serif italic">Bar</span>{" "}
