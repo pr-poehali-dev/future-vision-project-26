@@ -4,18 +4,23 @@ import { useNavigate } from "react-router-dom"
 import Icon from "@/components/ui/icon"
 
 const AMOUNTS = [100, 200, 300, 500, 1000]
-const PHONE = "+79497981786"
-const PHONE_DIGITS = "79497981786"
+const PHONE = "+7 949 798-17-86"
+const PHONE_RAW = "+79497981786"
 const NAME = "Вадим Б."
 
 export default function Tips() {
   const [selected, setSelected] = useState<number | null>(300)
   const [custom, setCustom] = useState("")
+  const [copied, setCopied] = useState<"phone" | null>(null)
   const navigate = useNavigate()
 
   const amount = custom ? parseInt(custom) || 0 : selected || 0
 
-  const tinkoffUrl = `https://www.tbank.ru/cf/tips/?phone=${PHONE_DIGITS}${amount ? `&amount=${amount}` : ""}`
+  const copyPhone = () => {
+    navigator.clipboard.writeText(PHONE_RAW)
+    setCopied("phone")
+    setTimeout(() => setCopied(null), 2000)
+  }
 
   return (
     <main className="relative min-h-screen flex flex-col items-center justify-center px-4 py-12">
@@ -44,7 +49,7 @@ export default function Tips() {
           </h1>
           <p className="text-gray-300 font-open-sans-custom text-sm leading-relaxed">
             Если вам понравилось — поблагодарите официанта.<br />
-            Перевод напрямую на карту Т-Банк.
+            Перевод по номеру телефона в любом банке.
           </p>
         </div>
 
@@ -110,23 +115,47 @@ export default function Tips() {
             </div>
           )}
 
-          {/* Кнопка оплаты */}
-          <a
-            href={tinkoffUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`w-full flex items-center justify-center gap-2 rounded-xl py-4 font-open-sans-custom font-semibold text-base transition-all ${
-              amount > 0
-                ? "bg-yellow-400 text-black hover:bg-yellow-300 active:scale-95"
-                : "bg-white/10 text-white/30 pointer-events-none"
-            }`}
+          {/* Инструкция */}
+          <div className="rounded-xl bg-white/5 border border-white/10 p-4 flex flex-col gap-3">
+            <p className="text-gray-300 font-open-sans-custom text-xs font-semibold uppercase tracking-wider">Как перевести</p>
+            <div className="flex flex-col gap-2">
+              <div className="flex items-start gap-2">
+                <span className="text-yellow-400 font-open-sans-custom text-xs font-bold mt-0.5">1.</span>
+                <p className="text-gray-300 font-open-sans-custom text-xs">Откройте приложение своего банка</p>
+              </div>
+              <div className="flex items-start gap-2">
+                <span className="text-yellow-400 font-open-sans-custom text-xs font-bold mt-0.5">2.</span>
+                <p className="text-gray-300 font-open-sans-custom text-xs">Перейдите в «Переводы» → «По номеру телефона»</p>
+              </div>
+              <div className="flex items-start gap-2">
+                <span className="text-yellow-400 font-open-sans-custom text-xs font-bold mt-0.5">3.</span>
+                <p className="text-gray-300 font-open-sans-custom text-xs">
+                  Введите номер{amount > 0 ? ` и сумму ${amount} ₽` : ""}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Кнопка копирования */}
+          <button
+            onClick={copyPhone}
+            className="w-full flex items-center justify-center gap-2 rounded-xl py-4 bg-yellow-400 text-black font-open-sans-custom font-semibold text-base hover:bg-yellow-300 active:scale-95 transition-all"
           >
-            <span>💳</span>
-            {amount > 0 ? `Перевести ${amount} ₽` : "Укажите сумму"}
-          </a>
+            {copied === "phone" ? (
+              <>
+                <Icon name="Check" size={18} />
+                Номер скопирован!
+              </>
+            ) : (
+              <>
+                <Icon name="Copy" size={18} />
+                Скопировать номер
+              </>
+            )}
+          </button>
 
           <p className="text-center text-gray-500 font-open-sans-custom text-xs">
-            Откроется приложение или сайт Т-Банка
+            {PHONE_RAW} · {NAME}
           </p>
         </div>
 
