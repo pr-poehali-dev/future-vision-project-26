@@ -13,6 +13,7 @@ import { MailIcon, PhoneIcon, MapPinIcon, SendIcon } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { useEffect, useRef, useState } from "react"
 import { useIsMobile } from "@/hooks/use-mobile"
+import { useNavigate } from "react-router-dom"
 
 const BOOKING_URL = "https://functions.poehali.dev/a419d7df-39e9-4f81-801e-5ced1af35d89"
 
@@ -96,6 +97,7 @@ function BookingForm() {
 }
 
 function MobileLayout() {
+  const navigate = useNavigate()
   return (
     <main className="relative min-h-screen">
       <LiquidMetalBackground />
@@ -142,6 +144,13 @@ function MobileLayout() {
                 <span>📞</span>
                 <span>Позвонить</span>
               </a>
+              <button
+                onClick={() => navigate("/tips")}
+                className="w-full max-w-xs flex items-center justify-center gap-2 px-6 py-4 rounded-xl border-2 border-yellow-400/30 bg-yellow-400/10 text-yellow-300 text-base font-open-sans-custom hover:bg-yellow-400/20 transition-colors"
+              >
+                <span>💛</span>
+                <span>Оставить чаевые</span>
+              </button>
             </div>
           </div>
         </section>
@@ -228,6 +237,7 @@ function MobileLayout() {
 }
 
 function DesktopLayout() {
+  const navigate = useNavigate()
   const scrollContainerRef = useRef<HTMLDivElement>(null)
   const pricingSectionRef = useRef<HTMLDivElement>(null)
   const aboutSectionRef = useRef<HTMLDivElement>(null)
@@ -365,6 +375,13 @@ function DesktopLayout() {
                   <span>📞</span>
                   <span>Позвонить</span>
                 </a>
+                <button
+                  onClick={() => navigate("/tips")}
+                  className="flex items-center gap-2 px-6 py-3 rounded-xl border-2 border-yellow-400/30 bg-yellow-400/10 text-yellow-300 text-sm md:text-base font-open-sans-custom hover:bg-yellow-400/20 transition-colors"
+                >
+                  <span>💛</span>
+                  <span>Чаевые</span>
+                </button>
               </div>
             </div>
           </div>
