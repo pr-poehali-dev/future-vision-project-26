@@ -161,11 +161,12 @@ export function BentoPricing() {
         titleBadge="ВИСКИ И КОНЬЯКИ"
         className="lg:col-span-3"
         items={[
-          { name: "Jack Daniel's", desc: "Tennessee Whiskey" },
-          { name: "Jameson", desc: "Irish Whiskey" },
-          { name: "Glenfiddich 12", desc: "Single Malt Scotch" },
-          { name: "Hennessy VS", desc: "коньяк" },
-          { name: "Rémy Martin VSOP", desc: "коньяк" },
+          { name: "Jack Daniel's", desc: "виски" },
+          { name: "Jim Beam", desc: "виски" },
+          { name: "Jameson", desc: "виски" },
+          { name: "Ballantine's", desc: "виски" },
+          { name: "Арарат 5★", desc: "коньяк" },
+          { name: "Арарат 3★", desc: "коньяк" },
         ]}
       />
 
