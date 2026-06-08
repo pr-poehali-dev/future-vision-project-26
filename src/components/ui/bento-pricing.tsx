@@ -101,6 +101,11 @@ export function BentoPricing() {
               { name: "Velvet Rose", desc: "клубника, личи, шампанское" },
               { name: "Spicy Mango", desc: "текила, манго, чили" },
               { name: "Arctic Sling", desc: "водка, мята, огурец, тоник" },
+              { name: "Lavande Spritz", desc: "лаванда, просекко, лимон" },
+              { name: "Cyan Lagoon", desc: "голубой кюрасао, лайм, тоник" },
+              { name: "Milk Punch", desc: "молоко, ром, ваниль, специи" },
+              { name: "G80 Heart", desc: "малина, роза, джин, личи" },
+              { name: "Donbass", desc: "авторский коктейль бара" },
             ].map((item, i) => (
               <li key={i} className="flex items-start gap-2">
                 <span className="text-white mt-0.5">🍸</span>
