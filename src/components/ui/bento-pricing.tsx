@@ -134,10 +134,6 @@ export function BentoPricing() {
         className="lg:col-span-4"
         featured
         items={[
-          { name: "G80 Shot", desc: "фирменный рецепт" },
-          { name: "Tropical Bomb", desc: "ром, кокос, ананас" },
-          { name: "Dark Matter", desc: "бурбон, мёд, апельсин" },
-          { name: "Red Dragon", desc: "водка, арбуз, чили" },
           { name: "Blow Job", desc: "бейлис, взбитые сливки" },
           { name: "KuniLi", desc: "лаймовый ликёр, мята, ром" },
           { name: "Камшот", desc: "сливочный ликёр, кокос" },
