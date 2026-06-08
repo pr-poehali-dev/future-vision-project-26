@@ -81,10 +81,9 @@ export function BentoPricing() {
         <div className="flex flex-col p-3 lg:flex-row gap-4">
           <ul className="text-gray-300 grid gap-2 text-xs lg:w-[50%] font-open-sans-custom">
             {[
-              { name: "Passion Storm", desc: "манго, маракуйя, ром" },
-              { name: "Dark Velvet", desc: "бурбон, вишня, биттер" },
-              { name: "Midnight Sour", desc: "джин, лимон, яичный белок" },
-              { name: "Smoky Negroni", desc: "копчёный джин, кампари, вермут" },
+              { name: "Lavande Spritz", desc: "лаванда, просекко, лимон" },
+              { name: "Cyan Lagoon", desc: "голубой кюрасао, лайм, тоник" },
+              { name: "Milk Punch", desc: "молоко, ром, ваниль, специи" },
             ].map((item, i) => (
               <li key={i} className="flex items-start gap-2">
                 <span className="text-white mt-0.5">🍸</span>
@@ -97,13 +96,6 @@ export function BentoPricing() {
           </ul>
           <ul className="text-gray-300 grid gap-2 text-xs lg:w-[50%] font-open-sans-custom">
             {[
-              { name: "G80 Special", desc: "секретный рецепт бара" },
-              { name: "Velvet Rose", desc: "клубника, личи, шампанское" },
-              { name: "Spicy Mango", desc: "текила, манго, чили" },
-              { name: "Arctic Sling", desc: "водка, мята, огурец, тоник" },
-              { name: "Lavande Spritz", desc: "лаванда, просекко, лимон" },
-              { name: "Cyan Lagoon", desc: "голубой кюрасао, лайм, тоник" },
-              { name: "Milk Punch", desc: "молоко, ром, ваниль, специи" },
               { name: "G80 Heart", desc: "малина, роза, джин, личи" },
               { name: "Donbass", desc: "авторский коктейль бара" },
             ].map((item, i) => (
