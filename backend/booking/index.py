@@ -2,6 +2,7 @@ import json
 import os
 import urllib.request
 import urllib.parse
+import urllib.error
 
 
 def handler(event: dict, context) -> dict:
@@ -59,14 +60,16 @@ def handler(event: dict, context) -> dict:
     }).encode()
 
     req = urllib.request.Request(url, data=data, method='POST')
-    with urllib.request.urlopen(req) as resp:
-        result = json.loads(resp.read())
-
-    if not result.get('ok'):
+    try:
+        with urllib.request.urlopen(req) as resp:
+            result = json.loads(resp.read())
+    except urllib.error.HTTPError as e:
+        error_body = e.read().decode()
+        print(f"Telegram error {e.code}: {error_body}")
         return {
             'statusCode': 500,
             'headers': {'Access-Control-Allow-Origin': '*'},
-            'body': {'error': 'telegram error'}
+            'body': {'error': f'telegram {e.code}', 'detail': error_body}
         }
 
     return {
