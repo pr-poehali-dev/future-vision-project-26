@@ -246,23 +246,17 @@ export default function Index() {
           </div>
           <div className="mx-auto max-w-4xl relative z-10 w-full">
             <div className="text-center px-2">
-              <div className="flex justify-center mb-4">
-                <img
-                  src="https://cdn.poehali.dev/projects/842b0b6f-f1be-4985-aa20-a468d555c6e1/files/67c83e85-00b1-4a8d-aded-c5bed83991a1.jpg"
-                  alt="G80"
-                  className="h-28 md:h-44 w-auto object-contain mix-blend-lighten drop-shadow-2xl"
-                  style={{ filter: "drop-shadow(0 0 20px rgba(100,180,255,0.8)) drop-shadow(0 0 40px rgba(100,180,255,0.4))" }}
-                />
-              </div>
-              <h1 className="mb-5 text-balance text-4xl sm:text-5xl tracking-tight text-white [text-shadow:_0_4px_20px_rgb(0_0_0_/_60%)] md:text-6xl lg:text-8xl">
+              <h1 className="mb-5 text-balance text-4xl sm:text-5xl tracking-tight md:text-6xl lg:text-8xl"
+                style={{ textShadow: "0 0 20px #a78bfa, 0 0 40px #7c3aed, 0 0 80px #4f46e5", color: "#fff" }}>
                 <span className="font-open-sans-custom not-italic">Lounge</span>{" "}
-                <span className="font-serif italic">Bar</span>{" "}
-                <span className="font-open-sans-custom not-italic">G80</span>
+                <span className="font-serif italic" style={{ textShadow: "0 0 20px #f472b6, 0 0 40px #ec4899, 0 0 80px #be185d", color: "#fdf4ff" }}>Bar</span>{" "}
+                <span className="font-open-sans-custom not-italic" style={{ textShadow: "0 0 20px #60a5fa, 0 0 40px #3b82f6, 0 0 80px #1d4ed8", color: "#fff" }}>G80</span>
               </h1>
 
-              <p className="mb-8 mx-auto max-w-lg text-pretty leading-relaxed text-gray-300 [text-shadow:_0_2px_10px_rgb(0_0_0_/_50%)] font-thin font-open-sans-custom tracking-wide text-base md:text-xl">
+              <p className="mb-8 mx-auto max-w-lg text-pretty leading-relaxed font-thin font-open-sans-custom tracking-wide text-base md:text-xl"
+                style={{ color: "#e2d9f3", textShadow: "0 0 10px rgba(167,139,250,0.4)" }}>
                 Авторские коктейли, кальяны и живая атмосфера —{" "}
-                <span className="font-serif italic">в самом сердце Донецка</span>
+                <span className="font-serif italic" style={{ color: "#f9a8d4", textShadow: "0 0 10px rgba(244,114,182,0.6)" }}>в самом сердце Донецка</span>
               </p>
 
               <div className="flex justify-center items-center gap-3 flex-wrap">
