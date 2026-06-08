@@ -262,8 +262,9 @@ export function BentoPricing() {
                 { name: "Абрау-Дюрсо брют" },
                 { name: "Veuve Alban брют" },
               ].map((item, i) => (
-                <li key={i} className="flex items-center gap-1.5">
-                  <span>🥂</span><span>{item.name}</span>
+                <li key={i} className="flex items-center justify-between gap-1.5">
+                  <span className="flex items-center gap-1.5"><span>🥂</span><span>{item.name}</span></span>
+                  <span className="text-white/70 text-xs flex-shrink-0">500 / 2 000 ₽</span>
                 </li>
               ))}
             </ul>
@@ -273,11 +274,13 @@ export function BentoPricing() {
                 { name: "Genatsvale" },
                 { name: "Алазанская долина" },
               ].map((item, i) => (
-                <li key={i} className="flex items-center gap-1.5">
-                  <span>🍷</span><span>{item.name}</span>
+                <li key={i} className="flex items-center justify-between gap-1.5">
+                  <span className="flex items-center gap-1.5"><span>🍷</span><span>{item.name}</span></span>
+                  <span className="text-white/70 text-xs flex-shrink-0">500 / 2 000 ₽</span>
                 </li>
               ))}
             </ul>
+            <p className="text-gray-500 text-xs mt-1.5 font-open-sans-custom">бокал / бутылка</p>
           </div>
           <div>
             <p className="text-white text-xs font-semibold font-open-sans-custom mb-2">⚡ Энергетики</p>
