@@ -291,7 +291,7 @@ export default function Index() {
                 {
                   icon: MailIcon,
                   label: "Режим работы",
-                  value: "Пн–Вс: 18:00 — 03:00",
+                  value: "Пн–Чт: 14:00–23:00 · Пт–Пн: 14:00–06:00",
                 },
               ]}
             >
