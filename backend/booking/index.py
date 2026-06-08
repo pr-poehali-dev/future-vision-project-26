@@ -1,8 +1,7 @@
 import json
 import os
-import urllib.request
+import http.client
 import urllib.parse
-import urllib.error
 
 
 def handler(event: dict, context) -> dict:
@@ -38,38 +37,45 @@ def handler(event: dict, context) -> dict:
     chat_id = os.environ['TELEGRAM_CHAT_ID']
 
     lines = [
-        '🥃 <b>Новая заявка на бронь — G80</b>',
+        '🥃 Новая заявка на бронь — G80',
         '',
-        f'👤 <b>Имя:</b> {name}',
-        f'📞 <b>Телефон:</b> {phone}',
+        f'Имя: {name}',
+        f'Телефон: {phone}',
     ]
     if date:
-        lines.append(f'📅 <b>Дата/время:</b> {date}')
+        lines.append(f'Дата/время: {date}')
     if guests:
-        lines.append(f'👥 <b>Гостей:</b> {guests}')
+        lines.append(f'Гостей: {guests}')
     if comment:
-        lines.append(f'💬 <b>Комментарий:</b> {comment}')
+        lines.append(f'Комментарий: {comment}')
 
     text = '\n'.join(lines)
 
-    url = f'https://api.telegram.org/bot{bot_token}/sendMessage'
-    data = urllib.parse.urlencode({
+    params = urllib.parse.urlencode({
         'chat_id': chat_id,
         'text': text,
-        'parse_mode': 'HTML'
-    }).encode()
+    })
 
-    req = urllib.request.Request(url, data=data, method='POST')
-    try:
-        with urllib.request.urlopen(req) as resp:
-            result = json.loads(resp.read())
-    except urllib.error.HTTPError as e:
-        error_body = e.read().decode()
-        print(f"Telegram error {e.code}: {error_body}")
+    conn = http.client.HTTPSConnection('api.telegram.org', timeout=10)
+    conn.request(
+        'POST',
+        f'/bot{bot_token}/sendMessage',
+        body=params,
+        headers={'Content-Type': 'application/x-www-form-urlencoded'}
+    )
+    resp = conn.getresponse()
+    resp_body = resp.read().decode()
+    conn.close()
+
+    print(f"Telegram response {resp.status}: {resp_body}")
+
+    result = json.loads(resp_body)
+
+    if not result.get('ok'):
         return {
             'statusCode': 500,
             'headers': {'Access-Control-Allow-Origin': '*'},
-            'body': {'error': f'telegram {e.code}', 'detail': error_body}
+            'body': {'error': 'telegram error', 'detail': resp_body}
         }
 
     return {
