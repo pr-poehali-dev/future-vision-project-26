@@ -387,6 +387,12 @@ export default function Index() {
           </div>
         </section>
       </div>
+
+      <div className="fixed bottom-0 left-0 right-0 z-20 py-2 text-center">
+        <p className="text-white/30 text-xs font-open-sans-custom">
+          © 2026 Lounge Bar G80 · Разработано Буров Вадим
+        </p>
+      </div>
     </main>
   )
 }
