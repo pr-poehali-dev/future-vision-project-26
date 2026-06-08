@@ -257,13 +257,20 @@ export default function Index() {
                 <span className="font-serif italic">в самом сердце Донецка</span>
               </p>
 
-              <div className="flex justify-center">
+              <div className="flex justify-center items-center gap-3 flex-wrap">
                 <ShinyButton
                   className="px-6 py-3 text-sm md:text-base cursor-pointer"
                   onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "start" })}
                 >
                   Забронировать стол
                 </ShinyButton>
+                <a
+                  href="tel:+79494305174"
+                  className="flex items-center gap-2 px-6 py-3 rounded-xl border-2 border-white/20 bg-white/5 backdrop-blur-sm text-white text-sm md:text-base font-open-sans-custom hover:bg-white/10 transition-colors"
+                >
+                  <span>📞</span>
+                  <span>Позвонить</span>
+                </a>
               </div>
             </div>
           </div>
