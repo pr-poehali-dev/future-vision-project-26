@@ -272,7 +272,7 @@ export function BentoPricing() {
             <ul className="text-gray-300 grid gap-2 text-sm font-open-sans-custom">
               {[
                 { name: "Red Bull", price: "350 ₽" },
-                { name: "Gorilla", price: "250 ₽" },
+                { name: "Burn", price: "250 ₽" },
                 { name: "Adrenaline Rush", price: "350 ₽" },
               ].map((item, i) => (
                 <li key={i} className="flex items-center justify-between gap-1.5">
