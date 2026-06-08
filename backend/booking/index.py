@@ -34,7 +34,7 @@ def handler(event: dict, context) -> dict:
         }
 
     bot_token = os.environ['TELEGRAM_BOT_TOKEN']
-    chat_id = os.environ['TELEGRAM_CHAT_ID']
+    chat_ids = [os.environ['TELEGRAM_CHAT_ID'], '-1003708419944']
 
     lines = [
         '🥃 Новая заявка на бронь — G80',
@@ -51,32 +51,22 @@ def handler(event: dict, context) -> dict:
 
     text = '\n'.join(lines)
 
-    params = urllib.parse.urlencode({
-        'chat_id': chat_id,
-        'text': text,
-    })
-
-    conn = http.client.HTTPSConnection('api.telegram.org', timeout=10)
-    conn.request(
-        'POST',
-        f'/bot{bot_token}/sendMessage',
-        body=params,
-        headers={'Content-Type': 'application/x-www-form-urlencoded'}
-    )
-    resp = conn.getresponse()
-    resp_body = resp.read().decode()
-    conn.close()
-
-    print(f"Telegram response {resp.status}: {resp_body}")
-
-    result = json.loads(resp_body)
-
-    if not result.get('ok'):
-        return {
-            'statusCode': 500,
-            'headers': {'Access-Control-Allow-Origin': '*'},
-            'body': {'error': 'telegram error', 'detail': resp_body}
-        }
+    for chat_id in chat_ids:
+        params = urllib.parse.urlencode({
+            'chat_id': chat_id,
+            'text': text,
+        })
+        conn = http.client.HTTPSConnection('api.telegram.org', timeout=10)
+        conn.request(
+            'POST',
+            f'/bot{bot_token}/sendMessage',
+            body=params,
+            headers={'Content-Type': 'application/x-www-form-urlencoded'}
+        )
+        resp = conn.getresponse()
+        resp_body = resp.read().decode()
+        conn.close()
+        print(f"Telegram [{chat_id}] response {resp.status}: {resp_body}")
 
     return {
         'statusCode': 200,
