@@ -155,26 +155,39 @@ export default function Index() {
         className="relative z-10 flex h-screen w-full overflow-x-auto overflow-y-hidden scroll-smooth snap-x snap-mandatory hide-scrollbar"
         style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
       >
-        <section id="home" className="flex min-w-full snap-start items-center justify-center px-4 py-20">
-          <div className="mx-auto max-w-4xl">
+        <section id="home" className="flex min-w-full snap-start items-center justify-center px-4 py-20 relative">
+          <div className="absolute inset-0 z-0">
+            <img
+              src="https://cdn.poehali.dev/projects/842b0b6f-f1be-4985-aa20-a468d555c6e1/files/4bccf198-b008-450e-ad52-d6d72ed0a280.jpg"
+              alt="G80 Bar"
+              className="w-full h-full object-cover opacity-30"
+            />
+          </div>
+          <div className="mx-auto max-w-4xl relative z-10">
             <div className="text-center px-0 leading-5">
               <h1 className="mb-8 text-balance text-5xl tracking-tight text-white [text-shadow:_0_4px_20px_rgb(0_0_0_/_60%)] md:text-6xl lg:text-8xl">
-                <span className="font-open-sans-custom not-italic">Идея.</span>{" "}
-                <span className="font-serif italic">Промпт.</span>{" "}
-                <span className="font-open-sans-custom not-italic">Результат.</span>
+                <span className="font-open-sans-custom not-italic">Lounge</span>{" "}
+                <span className="font-serif italic">Bar</span>{" "}
+                <span className="font-open-sans-custom not-italic">G80</span>
               </h1>
 
-              <p className="mb-8 mx-auto max-w-2xl text-pretty leading-relaxed text-gray-300 [text-shadow:_0_2px_10px_rgb(0_0_0_/_50%)] font-thin font-open-sans-custom tracking-wide leading-7 text-xl">
-                дизайнер, разработчик или просто любопытный — возьми идею,{" "}
-                <span className="font-serif italic">опиши</span> её и наблюдай, как она оживает
+              <p className="mb-8 mx-auto max-w-2xl text-pretty leading-relaxed text-gray-300 [text-shadow:_0_2px_10px_rgb(0_0_0_/_50%)] font-thin font-open-sans-custom tracking-wide text-xl">
+                Авторские коктейли, кальяны и живая атмосфера —{" "}
+                <span className="font-serif italic">в самом сердце Донецка</span>
               </p>
 
-              <div className="flex justify-center">
-                <ShinyButton className="px-8 py-3 text-base">начать</ShinyButton>
+              <div className="flex justify-center gap-4 flex-wrap">
+                <ShinyButton
+                  className="px-8 py-3 text-base cursor-pointer"
+                  onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "start" })}
+                >
+                  Забронировать стол
+                </ShinyButton>
               </div>
             </div>
           </div>
         </section>
+
 
         <section id="features" className="flex min-w-full snap-start items-center justify-center px-4 py-20">
           <div className="mx-auto max-w-7xl w-full">
@@ -201,11 +214,10 @@ export default function Index() {
           <div className="relative z-10 mx-auto w-full max-w-5xl">
             <div className="mx-auto mb-10 max-w-2xl text-center">
               <h1 className="text-4xl font-extrabold tracking-tight lg:text-6xl text-white [text-shadow:_0_4px_20px_rgb(0_0_0_/_60%)] font-open-sans-custom">
-                Тарифы и цены
+                Напитки и кальяны
               </h1>
               <p className="text-gray-300 mt-4 text-sm md:text-base font-open-sans-custom [text-shadow:_0_2px_10px_rgb(0_0_0_/_50%)]">
-                Выберите подходящий план. От индивидуальных авторов до корпоративных команд — гибкие
-                тарифы для вашего успеха.
+                Полный каталог нашего бара — авторские коктейли, шоты, виски, вина, кальяны и снэки.
               </p>
             </div>
             <BentoPricing />
@@ -231,10 +243,10 @@ export default function Index() {
           <div className="relative z-10 mx-auto w-full max-w-7xl">
             <div className="mx-auto mb-10 max-w-2xl text-center">
               <h1 className="text-4xl font-extrabold tracking-tight lg:text-6xl text-white [text-shadow:_0_4px_20px_rgb(0_0_0_/_60%)] font-open-sans-custom">
-                О нас
+                О баре G80
               </h1>
               <p className="text-gray-300 mt-4 text-sm md:text-base font-open-sans-custom [text-shadow:_0_2px_10px_rgb(0_0_0_/_50%)]">
-                Узнайте больше о нашей миссии, видении и ценностях, которые движут нами.
+                Место, куда хочется возвращаться. Атмосфера, сервис и напитки — на высшем уровне.
               </p>
             </div>
             <AboutQuote />
@@ -258,24 +270,23 @@ export default function Index() {
 
           <div className="relative z-10 mx-auto w-full max-w-5xl mt-[5vh]">
             <ContactCard
-              title="Свяжитесь с нами"
-              description="Если у вас есть вопросы о наших услугах или нужна помощь, заполните форму. Мы стараемся отвечать в течение 1 рабочего дня."
+              title="Приходите в G80"
+              description="Забронируйте столик или задайте любой вопрос. Будем рады видеть вас в нашем баре!"
               contactInfo={[
                 {
-                  icon: MailIcon,
-                  label: "Почта",
-                  value: "hello@promptcraft.dev",
+                  icon: MapPinIcon,
+                  label: "Адрес",
+                  value: "Донецк, ул. Постышева, 120",
                 },
                 {
                   icon: PhoneIcon,
                   label: "Телефон",
-                  value: "+7 (495) 123-45-67",
+                  value: "+7 (949) 000-00-00",
                 },
                 {
-                  icon: MapPinIcon,
-                  label: "Адрес",
-                  value: "Москва, Россия",
-                  className: "col-span-2",
+                  icon: MailIcon,
+                  label: "Режим работы",
+                  value: "Пн–Вс: 18:00 — 03:00",
                 },
               ]}
             >

@@ -1,26 +1,16 @@
 import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { Check, SparklesIcon } from "lucide-react"
+import { SparklesIcon } from "lucide-react"
 import DotPattern from "@/components/ui/dot-pattern"
 
-type PricingCardProps = {
+type MenuCardProps = {
   titleBadge: string
-  priceLabel: string
-  priceSuffix?: string
-  features: string[]
-  cta?: string
+  items: { name: string; desc?: string }[]
   className?: string
+  featured?: boolean
 }
 
-function PricingCard({
-  titleBadge,
-  priceLabel,
-  priceSuffix = "/мес",
-  features,
-  cta = "Подписаться",
-  className,
-}: PricingCardProps) {
+function MenuCard({ titleBadge, items, className, featured }: MenuCardProps) {
   return (
     <div
       className={cn(
@@ -34,31 +24,20 @@ function PricingCard({
         <Badge variant="secondary" className="bg-white/10 text-white border-white/20 font-open-sans-custom text-xs">
           {titleBadge}
         </Badge>
-        <div className="ml-auto">
-          <Button
-            variant="outline"
-            size="sm"
-            className="bg-white/5 text-white border-white/20 hover:bg-white/10 font-open-sans-custom text-xs"
-          >
-            {cta}
-          </Button>
-        </div>
-      </div>
-
-      <div className="flex items-end gap-2 px-3 py-1">
-        <span className="font-mono text-3xl font-semibold tracking-tight text-white [text-shadow:_0_4px_20px_rgb(0_0_0_/_60%)]">
-          {priceLabel}
-        </span>
-        {priceLabel.toLowerCase() !== "бесплатно" && priceLabel !== "0 ₽" && (
-          <span className="text-gray-300 text-xs font-open-sans-custom">{priceSuffix}</span>
+        {featured && (
+          <Badge variant="outline" className="hidden lg:flex bg-white/5 text-white border-white/20 font-open-sans-custom text-xs">
+            <SparklesIcon className="me-1 size-3" /> Топ
+          </Badge>
         )}
       </div>
-
       <ul className="text-gray-300 grid gap-2 p-3 text-xs font-open-sans-custom">
-        {features.map((f, i) => (
-          <li key={i} className="flex items-center gap-2">
-            <Check className="w-[1.05rem] h-[1.05rem] text-white flex-shrink-0" strokeWidth={3} />
-            <span>{f}</span>
+        {items.map((item, i) => (
+          <li key={i} className="flex items-start gap-2">
+            <span className="text-white mt-0.5">🍸</span>
+            <span>
+              <span className="text-white font-medium">{item.name}</span>
+              {item.desc && <span className="text-gray-400"> — {item.desc}</span>}
+            </span>
           </li>
         ))}
       </ul>
@@ -69,6 +48,8 @@ function PricingCard({
 export function BentoPricing() {
   return (
     <div className="grid grid-cols-1 gap-1.5 md:grid-cols-2 lg:grid-cols-8">
+
+      {/* Авторские коктейли — большая карточка */}
       <div
         className={cn(
           "bg-white/5 border-white/10 relative w-full overflow-hidden rounded-md border-2",
@@ -91,89 +72,194 @@ export function BentoPricing() {
         </div>
         <div className="flex items-center gap-3 p-3">
           <Badge variant="secondary" className="bg-white/10 text-white border-white/20 font-open-sans-custom text-xs">
-            ПРЕМИУМ
+            АВТОРСКИЕ КОКТЕЙЛИ
           </Badge>
-          <Badge
-            variant="outline"
-            className="hidden lg:flex bg-white/5 text-white border-white/20 font-open-sans-custom text-xs"
-          >
-            <SparklesIcon className="me-1 size-3" /> Популярный
+          <Badge variant="outline" className="hidden lg:flex bg-white/5 text-white border-white/20 font-open-sans-custom text-xs">
+            <SparklesIcon className="me-1 size-3" /> Хиты бара
           </Badge>
-          <div className="ml-auto">
-            <Button size="sm" className="bg-white text-black hover:bg-gray-100 font-open-sans-custom text-xs">
-              Подписаться
-            </Button>
-          </div>
         </div>
-        <div className="flex flex-col p-3 lg:flex-row">
-          <div className="pb-2 lg:w-[30%]">
-            <span className="font-mono text-3xl font-semibold tracking-tight text-white [text-shadow:_0_4px_20px_rgb(0_0_0_/_60%)]">
-              2 000 ₽
-            </span>
-            <span className="text-gray-300 text-xs font-open-sans-custom">/мес</span>
-          </div>
-          <ul className="text-gray-300 grid gap-2 text-xs lg:w-[70%] font-open-sans-custom">
+        <div className="flex flex-col p-3 lg:flex-row gap-4">
+          <ul className="text-gray-300 grid gap-2 text-xs lg:w-[50%] font-open-sans-custom">
             {[
-              "2 000 ₽ кредитов включено ежемесячно",
-              "Докупайте кредиты сверх месячного лимита",
-              "5x увеличенный лимит вложений",
-              "Импорт дизайнов из популярных инструментов",
-            ].map((f, i) => (
-              <li key={i} className="flex items-center gap-2">
-                <Check className="w-[1.05rem] h-[1.05rem] text-white flex-shrink-0" strokeWidth={3} />
-                <span className="leading-relaxed">{f}</span>
+              { name: "Passion Storm", desc: "манго, маракуйя, ром" },
+              { name: "Dark Velvet", desc: "бурбон, вишня, биттер" },
+              { name: "Midnight Sour", desc: "джин, лимон, яичный белок" },
+              { name: "Smoky Negroni", desc: "копчёный джин, кампари, вермут" },
+            ].map((item, i) => (
+              <li key={i} className="flex items-start gap-2">
+                <span className="text-white mt-0.5">🍸</span>
+                <span>
+                  <span className="text-white font-medium">{item.name}</span>
+                  <span className="text-gray-400"> — {item.desc}</span>
+                </span>
+              </li>
+            ))}
+          </ul>
+          <ul className="text-gray-300 grid gap-2 text-xs lg:w-[50%] font-open-sans-custom">
+            {[
+              { name: "G80 Special", desc: "секретный рецепт бара" },
+              { name: "Velvet Rose", desc: "клубника, личи, шампанское" },
+              { name: "Spicy Mango", desc: "текила, манго, чили" },
+              { name: "Arctic Sling", desc: "водка, мята, огурец, тоник" },
+            ].map((item, i) => (
+              <li key={i} className="flex items-start gap-2">
+                <span className="text-white mt-0.5">🍸</span>
+                <span>
+                  <span className="text-white font-medium">{item.name}</span>
+                  <span className="text-gray-400"> — {item.desc}</span>
+                </span>
               </li>
             ))}
           </ul>
         </div>
       </div>
 
-      <PricingCard
-        titleBadge="СТАРТ"
-        priceLabel="0 ₽"
-        features={[
-          "500 ₽ кредитов включено ежемесячно",
-          "Деплой приложений в облако",
-          "Визуальное редактирование",
-          "Синхронизация с Git",
-        ]}
+      {/* Классические коктейли */}
+      <MenuCard
+        titleBadge="КЛАССИЧЕСКИЕ КОКТЕЙЛИ"
         className="lg:col-span-3"
-        cta="Начать"
-      />
-
-      <PricingCard
-        titleBadge="КОМАНДА"
-        priceLabel="3 000 ₽"
-        priceSuffix="/чел/мес"
-        features={[
-          "3 000 ₽ кредитов на участника ежемесячно",
-          "Единый биллинг и управление командой",
-          "Общие чаты и совместная работа",
+        items={[
+          { name: "Mojito", desc: "ром, мята, лайм" },
+          { name: "Aperol Spritz", desc: "апероль, просекко" },
+          { name: "Margarita", desc: "текила, лайм, трипл-сек" },
+          { name: "Cosmopolitan", desc: "водка, клюква, лайм" },
+          { name: "Long Island", desc: "5 видов алкоголя, кола" },
+          { name: "Daiquiri", desc: "ром, лайм, сахар" },
         ]}
-        className="lg:col-span-4"
       />
 
-      <PricingCard
-        titleBadge="БИЗНЕС"
-        priceLabel="10 000 ₽"
-        priceSuffix="/чел/мес"
-        features={["3 000 ₽ кредитов на участника ежемесячно", "Отключение обучения по умолчанию", "Полный доступ к API"]}
+      {/* Авторские шоты */}
+      <MenuCard
+        titleBadge="АВТОРСКИЕ ШОТЫ"
         className="lg:col-span-4"
-      />
-
-      <PricingCard
-        titleBadge="КОРПОРАЦИЯ"
-        priceLabel="По запросу"
-        priceSuffix=""
-        features={[
-          "Отключение обучения по умолчанию",
-          "SAML SSO",
-          "Приоритетный доступ",
-          "Персональная поддержка",
+        featured
+        items={[
+          { name: "G80 Shot", desc: "фирменный рецепт" },
+          { name: "Tropical Bomb", desc: "ром, кокос, ананас" },
+          { name: "Dark Matter", desc: "бурбон, мёд, апельсин" },
+          { name: "Red Dragon", desc: "водка, арбуз, чили" },
         ]}
-        className="lg:col-span-8"
-        cta="Связаться"
       />
+
+      {/* Шоты классические */}
+      <MenuCard
+        titleBadge="ШОТЫ"
+        className="lg:col-span-4"
+        items={[
+          { name: "Б-52", desc: "калуа, бейлис, куантро" },
+          { name: "Ягербомб", desc: "ягермайстер + энергетик" },
+          { name: "Самбука", desc: "классика с зёрнами кофе" },
+          { name: "Текила", desc: "соль, лайм" },
+          { name: "Клубничный взрыв", desc: "малиновый ликёр, водка" },
+        ]}
+      />
+
+      {/* Виски и коньяки */}
+      <MenuCard
+        titleBadge="ВИСКИ И КОНЬЯКИ"
+        className="lg:col-span-3"
+        items={[
+          { name: "Jack Daniel's", desc: "Tennessee Whiskey" },
+          { name: "Jameson", desc: "Irish Whiskey" },
+          { name: "Glenfiddich 12", desc: "Single Malt Scotch" },
+          { name: "Hennessy VS", desc: "коньяк" },
+          { name: "Rémy Martin VSOP", desc: "коньяк" },
+        ]}
+      />
+
+      {/* Кальяны */}
+      <div
+        className={cn(
+          "bg-white/5 border-white/10 relative w-full overflow-hidden rounded-md border-2",
+          "backdrop-blur-sm",
+          "lg:col-span-5",
+        )}
+      >
+        <DotPattern width={5} height={5} />
+        <div className="flex items-center gap-3 p-3">
+          <Badge variant="secondary" className="bg-white/10 text-white border-white/20 font-open-sans-custom text-xs">
+            КАЛЬЯНЫ
+          </Badge>
+          <Badge variant="outline" className="hidden lg:flex bg-white/5 text-white border-white/20 font-open-sans-custom text-xs">
+            <SparklesIcon className="me-1 size-3" /> Премиум доступен
+          </Badge>
+        </div>
+        <div className="flex flex-col p-3 lg:flex-row gap-4">
+          <div className="lg:w-[50%]">
+            <p className="text-white text-xs font-semibold font-open-sans-custom mb-2">🌿 Обычные</p>
+            <ul className="text-gray-300 grid gap-2 text-xs font-open-sans-custom">
+              {["Два Яблока", "Виноград Мята", "Арбуз", "Клубника Банан", "Лесные ягоды"].map((name, i) => (
+                <li key={i} className="flex items-center gap-2">
+                  <span className="text-white">💨</span>
+                  <span>{name}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="lg:w-[50%]">
+            <p className="text-white text-xs font-semibold font-open-sans-custom mb-2">✨ Премиум</p>
+            <ul className="text-gray-300 grid gap-2 text-xs font-open-sans-custom">
+              {["Белый виноград на молоке", "Тропический коктейль", "Чёрная смородина на льду", "Роза лаванда", "Экзотические фрукты"].map((name, i) => (
+                <li key={i} className="flex items-center gap-2">
+                  <span className="text-white">⭐</span>
+                  <span>{name}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      {/* Пиво и напитки */}
+      <div
+        className={cn(
+          "bg-white/5 border-white/10 relative w-full overflow-hidden rounded-md border-2",
+          "backdrop-blur-sm",
+          "lg:col-span-8",
+        )}
+      >
+        <DotPattern width={5} height={5} />
+        <div className="flex items-center gap-3 p-3">
+          <Badge variant="secondary" className="bg-white/10 text-white border-white/20 font-open-sans-custom text-xs">
+            ПИВО, ВИНА И НАПИТКИ
+          </Badge>
+        </div>
+        <div className="flex flex-col p-3 lg:flex-row gap-6">
+          <div className="lg:w-[25%]">
+            <p className="text-white text-xs font-semibold font-open-sans-custom mb-2">🍺 Пиво</p>
+            <ul className="text-gray-300 grid gap-1.5 text-xs font-open-sans-custom">
+              {["Heineken", "Corona", "Budweiser", "Stella Artois", "Живое тёмное"].map((name, i) => (
+                <li key={i} className="flex items-center gap-2"><span>🍺</span><span>{name}</span></li>
+              ))}
+            </ul>
+          </div>
+          <div className="lg:w-[25%]">
+            <p className="text-white text-xs font-semibold font-open-sans-custom mb-2">🥂 Шампанское и вина</p>
+            <ul className="text-gray-300 grid gap-1.5 text-xs font-open-sans-custom">
+              {["Просекко", "Асти", "Белое сухое", "Красное полусладкое", "Розовое"].map((name, i) => (
+                <li key={i} className="flex items-center gap-2"><span>🥂</span><span>{name}</span></li>
+              ))}
+            </ul>
+          </div>
+          <div className="lg:w-[25%]">
+            <p className="text-white text-xs font-semibold font-open-sans-custom mb-2">⚡ Энергетики</p>
+            <ul className="text-gray-300 grid gap-1.5 text-xs font-open-sans-custom">
+              {["Red Bull", "Monster", "Gorilla", "Adrenaline Rush"].map((name, i) => (
+                <li key={i} className="flex items-center gap-2"><span>⚡</span><span>{name}</span></li>
+              ))}
+            </ul>
+          </div>
+          <div className="lg:w-[25%]">
+            <p className="text-white text-xs font-semibold font-open-sans-custom mb-2">🥤 Прохладительные и снэки</p>
+            <ul className="text-gray-300 grid gap-1.5 text-xs font-open-sans-custom">
+              {["Coca-Cola", "Fanta", "Sprite", "Орешки", "Сыр косичка", "Чипсы"].map((name, i) => (
+                <li key={i} className="flex items-center gap-2"><span>🥤</span><span>{name}</span></li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+
     </div>
   )
 }
