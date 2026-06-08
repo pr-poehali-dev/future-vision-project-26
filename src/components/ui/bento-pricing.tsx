@@ -231,7 +231,7 @@ export function BentoPricing() {
           <div className="lg:w-[25%]">
             <p className="text-white text-xs font-semibold font-open-sans-custom mb-2">🍺 Пиво</p>
             <ul className="text-gray-300 grid gap-1.5 text-xs font-open-sans-custom">
-              {["Heineken", "Corona", "Budweiser", "Stella Artois", "Живое тёмное"].map((name, i) => (
+              {["Corona", "Bud", "Tuborg", "Hoegaarden", "Балтика 0"].map((name, i) => (
                 <li key={i} className="flex items-center gap-2"><span>🍺</span><span>{name}</span></li>
               ))}
             </ul>
