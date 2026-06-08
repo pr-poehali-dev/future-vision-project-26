@@ -138,6 +138,12 @@ export function BentoPricing() {
           { name: "Tropical Bomb", desc: "ром, кокос, ананас" },
           { name: "Dark Matter", desc: "бурбон, мёд, апельсин" },
           { name: "Red Dragon", desc: "водка, арбуз, чили" },
+          { name: "Blow Job", desc: "бейлис, взбитые сливки" },
+          { name: "KuniLi", desc: "лаймовый ликёр, мята, ром" },
+          { name: "Камшот", desc: "сливочный ликёр, кокос" },
+          { name: "Точка G", desc: "гренадин, малина, водка" },
+          { name: "БДСМ", desc: "бурбон, дым, специи" },
+          { name: "Dirty Talk", desc: "текила, перец, лайм" },
         ]}
       />
 
