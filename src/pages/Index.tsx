@@ -1,5 +1,6 @@
 import { LiquidMetalBackground } from "@/components/LiquidMetalBackground"
 import { FloatingNavbar } from "@/components/FloatingNavbar"
+import { WorldCupBanner } from "@/components/WorldCupBanner"
 import { ShinyButton } from "@/components/ui/shiny-button"
 import { Feature } from "@/components/ui/feature-with-advantages"
 import { BentoPricing } from "@/components/ui/bento-pricing"
@@ -152,6 +153,13 @@ function MobileLayout() {
                 <span>Оставить чаевые</span>
               </button>
             </div>
+          </div>
+        </section>
+
+        {/* ЧМ 2026 */}
+        <section className="relative px-4 py-8">
+          <div className="relative z-10 mx-auto max-w-lg w-full">
+            <WorldCupBanner />
           </div>
         </section>
 
@@ -384,6 +392,9 @@ function DesktopLayout() {
                 </button>
               </div>
             </div>
+          </div>
+          <div className="mx-auto max-w-4xl relative z-10 w-full mt-8 px-2">
+            <WorldCupBanner />
           </div>
         </section>
 
