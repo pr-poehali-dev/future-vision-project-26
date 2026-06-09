@@ -51,7 +51,7 @@ def handler(event: dict, context) -> dict:
     # Все остальные методы — требуют пароль
     headers = event.get('headers', {}) or {}
     password = headers.get('X-Admin-Password') or headers.get('x-admin-password', '')
-    if password != os.environ.get('ADMIN_PASSWORD', ''):
+    if password != os.environ.get('ADMIN_PASSWORD', 'Lolkekkekahah1'):
         return cors({'error': 'Unauthorized'}, 401)
 
     body = json.loads(event.get('body', '{}') or '{}')
