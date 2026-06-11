@@ -199,22 +199,22 @@ export function BentoPricing() {
         </div>
         <div className="grid grid-cols-2 gap-4 p-3">
           <div>
-            <p className="text-white text-xs font-semibold font-open-sans-custom mb-2">🌿 Обычные — <span className="text-white/70">1 400 ₽</span></p>
+            <p className="text-white text-xs font-semibold font-open-sans-custom mb-2">✨ Премиум</p>
             <ul className="text-gray-300 grid gap-2 text-sm font-open-sans-custom">
-              {["Два Яблока", "Виноград Мята", "Арбуз", "Клубника Банан", "Лесные ягоды"].map((name, i) => (
+              {["Северный", "SATYR", "Sebero", "Overdose", "Trofimof", "Deus", "Bonche"].map((name, i) => (
                 <li key={i} className="flex items-center gap-2">
-                  <span className="text-white flex-shrink-0">💨</span>
+                  <span className="text-white flex-shrink-0">⭐</span>
                   <span>{name}</span>
                 </li>
               ))}
             </ul>
           </div>
           <div>
-            <p className="text-white text-xs font-semibold font-open-sans-custom mb-2">✨ Премиум — <span className="text-white/70">1 600 ₽</span></p>
+            <p className="text-white text-xs font-semibold font-open-sans-custom mb-2">🌿 Обычный</p>
             <ul className="text-gray-300 grid gap-2 text-sm font-open-sans-custom">
-              {["Белый виноград на молоке", "Тропический коктейль", "Чёрная смородина на льду", "Роза лаванда", "Экзотические фрукты"].map((name, i) => (
+              {["MUST HAVE", "DARKSIDE", "Black Burn", "Starline", "Spectrum"].map((name, i) => (
                 <li key={i} className="flex items-center gap-2">
-                  <span className="text-white flex-shrink-0">⭐</span>
+                  <span className="text-white flex-shrink-0">💨</span>
                   <span>{name}</span>
                 </li>
               ))}
