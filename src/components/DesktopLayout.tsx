@@ -153,7 +153,7 @@ export function DesktopLayout() {
                 </a>
                 <button
                   onClick={() => navigate("/tips")}
-                  className="flex items-center gap-2 px-6 py-3 rounded-xl border-2 border-yellow-400/30 bg-yellow-400/10 text-yellow-300 text-sm md:text-base font-open-sans-custom hover:bg-yellow-400/20 transition-colors"
+                  className="flex items-center gap-2 px-6 py-3 rounded-xl border-2 border-white/20 bg-white/5 backdrop-blur-sm text-white text-sm md:text-base font-open-sans-custom hover:bg-white/10 transition-colors"
                 >
                   <span>💛</span>
                   <span>Чаевые</span>

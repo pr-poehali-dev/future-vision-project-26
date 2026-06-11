@@ -53,14 +53,14 @@ export function MobileLayout() {
               </ShinyButton>
               <a
                 href="tel:+79494305174"
-                className="w-full max-w-xs flex items-center justify-center gap-2 px-6 py-4 rounded-xl border-2 border-white/20 bg-white/5 backdrop-blur-sm text-white text-base font-open-sans-custom"
+                className="w-full max-w-xs flex items-center justify-center gap-2 px-6 py-4 rounded-xl border-2 border-white/20 bg-white/5 backdrop-blur-sm text-white text-base font-open-sans-custom hover:bg-white/10 transition-colors"
               >
                 <span>📞</span>
                 <span>Позвонить</span>
               </a>
               <button
                 onClick={() => navigate("/tips")}
-                className="w-full max-w-xs flex items-center justify-center gap-2 px-6 py-4 rounded-xl border-2 border-yellow-400/30 bg-yellow-400/10 text-yellow-300 text-base font-open-sans-custom hover:bg-yellow-400/20 transition-colors"
+                className="w-full max-w-xs flex items-center justify-center gap-2 px-6 py-4 rounded-xl border-2 border-white/20 bg-white/5 backdrop-blur-sm text-white text-base font-open-sans-custom hover:bg-white/10 transition-colors"
               >
                 <span>💛</span>
                 <span>Оставить чаевые</span>
