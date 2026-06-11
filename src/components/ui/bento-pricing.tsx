@@ -14,7 +14,7 @@ function MenuCard({ titleBadge, items, className, featured }: MenuCardProps) {
   return (
     <div
       className={cn(
-        "bg-white/5 border-white/10 relative overflow-hidden rounded-md border-2",
+        "bg-white/5 border-white/10 relative overflow-hidden rounded-md border-2 neon-card transition-all duration-300",
         "backdrop-blur-sm",
         className,
       )}

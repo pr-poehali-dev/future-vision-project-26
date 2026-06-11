@@ -119,18 +119,26 @@ export function DesktopLayout() {
         <section id="home" className="flex min-w-full snap-start items-center justify-center px-4 py-16 md:py-20 relative">
           <div className="absolute inset-0 z-0">
             <img
-              src="https://cdn.poehali.dev/projects/842b0b6f-f1be-4985-aa20-a468d555c6e1/files/4bccf198-b008-450e-ad52-d6d72ed0a280.jpg"
+              src="https://cdn.poehali.dev/projects/842b0b6f-f1be-4985-aa20-a468d555c6e1/bucket/a2f7818f-ebc5-49ee-940c-7a3771b641df.jpeg"
               alt="G80 Bar"
-              className="w-full h-full object-cover opacity-30"
+              className="w-full h-full object-cover opacity-20"
             />
+            <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(10,4,40,0.4) 0%, rgba(20,5,60,0.2) 50%, rgba(10,4,40,0.6) 100%)" }} />
           </div>
+          {/* Neon bottom line */}
+          <div className="absolute bottom-0 left-0 right-0 z-10 neon-divider" />
           <div className="mx-auto max-w-4xl relative z-10 w-full">
             <div className="text-center px-2">
+              <div className="mb-4 flex justify-center">
+                <span className="text-xs tracking-[0.4em] uppercase font-open-sans-custom neon-pulse px-5 py-1.5 rounded-full border border-purple-500/40 bg-purple-900/20 text-purple-300">
+                  Донецк
+                </span>
+              </div>
               <h1 className="mb-5 text-balance text-4xl sm:text-5xl tracking-tight md:text-6xl lg:text-8xl"
-                style={{ textShadow: "0 0 20px #a78bfa, 0 0 40px #7c3aed, 0 0 80px #4f46e5", color: "#fff" }}>
-                <span className="font-open-sans-custom not-italic">Lounge</span>{" "}
+                style={{ color: "#fff" }}>
+                <span className="font-open-sans-custom not-italic neon-purple">Lounge</span>{" "}
                 <span className="font-serif italic" style={{ textShadow: "0 0 20px #f472b6, 0 0 40px #ec4899, 0 0 80px #be185d", color: "#fdf4ff" }}>Bar</span>{" "}
-                <span className="font-open-sans-custom not-italic" style={{ textShadow: "0 0 20px #60a5fa, 0 0 40px #3b82f6, 0 0 80px #1d4ed8", color: "#fff" }}>G80</span>
+                <span className="font-open-sans-custom not-italic neon-blue">G80</span>
               </h1>
               <p className="mb-8 mx-auto max-w-lg text-pretty leading-relaxed font-thin font-open-sans-custom tracking-wide text-base md:text-xl"
                 style={{ color: "#e2d9f3", textShadow: "0 0 10px rgba(167,139,250,0.4)" }}>

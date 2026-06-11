@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&family=Rubik:wght@300;400;500;600;700;800;900&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&family=Rubik:wght@300;400;500;600;700;800;900&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -132,4 +132,119 @@
 .hide-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+/* Neon glow effects */
+.neon-purple {
+  text-shadow:
+    0 0 7px #bf5fff,
+    0 0 20px #bf5fff,
+    0 0 45px #9b3fe8,
+    0 0 80px #7b2fd4;
+}
+
+.neon-blue {
+  text-shadow:
+    0 0 7px #4fc3ff,
+    0 0 20px #4fc3ff,
+    0 0 45px #2196f3,
+    0 0 80px #1565c0;
+}
+
+.neon-pink {
+  text-shadow:
+    0 0 7px #ff69b4,
+    0 0 20px #ff69b4,
+    0 0 45px #e91e8c,
+    0 0 80px #c2185b;
+}
+
+.neon-border-purple {
+  box-shadow:
+    0 0 8px #9b3fe8,
+    0 0 20px rgba(155, 63, 232, 0.3),
+    inset 0 0 8px rgba(155, 63, 232, 0.1);
+  border-color: rgba(155, 63, 232, 0.6) !important;
+}
+
+.neon-border-blue {
+  box-shadow:
+    0 0 8px #2196f3,
+    0 0 20px rgba(33, 150, 243, 0.3),
+    inset 0 0 8px rgba(33, 150, 243, 0.1);
+  border-color: rgba(33, 150, 243, 0.5) !important;
+}
+
+.neon-card {
+  box-shadow:
+    0 0 15px rgba(155, 63, 232, 0.15),
+    0 0 40px rgba(100, 40, 200, 0.08);
+  border-color: rgba(155, 63, 232, 0.25) !important;
+}
+
+.neon-card:hover {
+  box-shadow:
+    0 0 20px rgba(155, 63, 232, 0.3),
+    0 0 50px rgba(100, 40, 200, 0.15);
+  border-color: rgba(155, 63, 232, 0.45) !important;
+  transition: all 0.3s ease;
+}
+
+/* Neon line divider */
+.neon-divider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #9b3fe8,
+    #4fc3ff,
+    #9b3fe8,
+    transparent
+  );
+  box-shadow:
+    0 0 8px #9b3fe8,
+    0 0 15px rgba(79, 195, 255, 0.4);
+}
+
+/* Flicker animation for neon */
+@keyframes neon-flicker {
+  0%,
+  19%,
+  21%,
+  23%,
+  25%,
+  54%,
+  56%,
+  100% {
+    opacity: 1;
+  }
+  20%,
+  24%,
+  55% {
+    opacity: 0.7;
+  }
+}
+
+.neon-flicker {
+  animation: neon-flicker 4s infinite;
+}
+
+/* Neon pulse */
+@keyframes neon-pulse {
+  0%,
+  100% {
+    box-shadow:
+      0 0 8px #9b3fe8,
+      0 0 20px rgba(155, 63, 232, 0.3);
+  }
+  50% {
+    box-shadow:
+      0 0 15px #9b3fe8,
+      0 0 40px rgba(155, 63, 232, 0.5),
+      0 0 60px rgba(79, 195, 255, 0.2);
+  }
+}
+
+.neon-pulse {
+  animation: neon-pulse 3s ease-in-out infinite;
 }

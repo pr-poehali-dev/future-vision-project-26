@@ -16,19 +16,25 @@ export function LiquidMetalBackground() {
     <div className="absolute inset-0 -z-10">
       <Warp
         style={{ width: "100%", height: "100%" }}
-        color1="hsla(240, 100%, 5%, 1)"
-        color2="hsla(260, 70%, 35%, 1)"
-        color3="hsla(280, 50%, 50%, 1)"
-        scale={0.5}
-        rotation={0}
-        speed={0.15}
-        proportion={0.35}
-        softness={1}
-        distortion={0.2}
-        swirl={0.6}
-        swirlIterations={8}
-        shapeScale={0.1}
+        color1="hsla(255, 100%, 3%, 1)"
+        color2="hsla(270, 80%, 18%, 1)"
+        color3="hsla(220, 90%, 22%, 1)"
+        scale={0.4}
+        rotation={0.1}
+        speed={0.1}
+        proportion={0.3}
+        softness={0.9}
+        distortion={0.15}
+        swirl={0.8}
+        swirlIterations={10}
+        shapeScale={0.08}
         shape={0}
+      />
+      {/* Neon overlay glow */}
+      <div className="absolute inset-0 pointer-events-none"
+        style={{
+          background: "radial-gradient(ellipse at 30% 60%, rgba(120, 40, 220, 0.18) 0%, transparent 60%), radial-gradient(ellipse at 70% 30%, rgba(30, 80, 200, 0.15) 0%, transparent 55%)",
+        }}
       />
     </div>
   )
