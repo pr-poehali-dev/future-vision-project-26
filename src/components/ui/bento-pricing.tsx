@@ -217,19 +217,31 @@ export function BentoPricing() {
                 </ul>
               </div>
               <div>
+                <p className="text-white text-xs font-semibold font-open-sans-custom mb-2">🥂 Шампанское</p>
+                <ul className="text-gray-300 grid gap-2 text-sm font-open-sans-custom">
+                  {[
+                    { name: "Абрау-Дюрсо брют" },
+                    { name: "Veuve Alban брют" },
+                  ].map((item, i) => (
+                    <li key={i} className="flex items-center gap-1.5">
+                      <span>🥂</span><span>{item.name}</span>
+                    </li>
+                  ))}
+                  <li className="text-white/50 text-xs">бокал 500 ₽ / бутылка 2 000 ₽</li>
+                </ul>
+              </div>
+              <div>
                 <p className="text-white text-xs font-semibold font-open-sans-custom mb-2">🍷 Вино</p>
                 <ul className="text-gray-300 grid gap-2 text-sm font-open-sans-custom">
                   {[
-                    { name: "Красное сухое", price: "350 ₽" },
-                    { name: "Белое сухое", price: "350 ₽" },
-                    { name: "Розовое", price: "350 ₽" },
-                    { name: "Просекко", price: "400 ₽" },
+                    { name: "Genatsvale" },
+                    { name: "Алазанская долина" },
                   ].map((item, i) => (
-                    <li key={i} className="flex items-center justify-between gap-1.5">
-                      <span className="flex items-center gap-1.5"><span>🍷</span><span>{item.name}</span></span>
-                      <span className="text-white/70 text-xs">{item.price}</span>
+                    <li key={i} className="flex items-center gap-1.5">
+                      <span>🍷</span><span>{item.name}</span>
                     </li>
                   ))}
+                  <li className="text-white/50 text-xs">бокал 500 ₽ / бутылка 2 000 ₽</li>
                 </ul>
               </div>
 
