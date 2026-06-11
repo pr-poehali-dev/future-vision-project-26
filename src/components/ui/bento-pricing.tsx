@@ -287,6 +287,20 @@ export function BentoPricing() {
               </Badge>
             </div>
             <div className="grid grid-cols-2 gap-4 p-3">
+              <div className="col-span-2 border-b border-white/10 pb-3 mb-1">
+                <p className="text-white text-xs font-semibold font-open-sans-custom mb-2">➕ Опции</p>
+                <ul className="text-gray-300 grid grid-cols-2 gap-2 text-sm font-open-sans-custom">
+                  {[
+                    { name: "Молоко в колбу", price: "300 ₽" },
+                    { name: "Усилитель крепости", price: "200 ₽" },
+                  ].map((item, i) => (
+                    <li key={i} className="flex items-center justify-between gap-2">
+                      <span className="text-white">{item.name}</span>
+                      <span className="text-white/70 text-xs font-medium flex-shrink-0">{item.price}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
               <div>
                 <p className="text-white text-xs font-semibold font-open-sans-custom mb-2">✨ Премиум — <span className="text-white/70">1 600 ₽</span></p>
                 <ul className="text-gray-300 grid gap-2 text-sm font-open-sans-custom">
