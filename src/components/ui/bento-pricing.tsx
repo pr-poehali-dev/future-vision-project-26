@@ -199,7 +199,7 @@ export function BentoPricing() {
         </div>
         <div className="grid grid-cols-2 gap-4 p-3">
           <div>
-            <p className="text-white text-xs font-semibold font-open-sans-custom mb-2">✨ Премиум</p>
+            <p className="text-white text-xs font-semibold font-open-sans-custom mb-2">✨ Премиум — <span className="text-white/70">1 600 ₽</span></p>
             <ul className="text-gray-300 grid gap-2 text-sm font-open-sans-custom">
               {["Северный", "SATYR", "Sebero", "Overdose", "Trofimof", "Deus", "Bonche"].map((name, i) => (
                 <li key={i} className="flex items-center gap-2">
@@ -210,7 +210,7 @@ export function BentoPricing() {
             </ul>
           </div>
           <div>
-            <p className="text-white text-xs font-semibold font-open-sans-custom mb-2">🌿 Обычный</p>
+            <p className="text-white text-xs font-semibold font-open-sans-custom mb-2">🌿 Обычный — <span className="text-white/70">1 400 ₽</span></p>
             <ul className="text-gray-300 grid gap-2 text-sm font-open-sans-custom">
               {["MUST HAVE", "DARKSIDE", "Black Burn", "Starline", "Spectrum"].map((name, i) => (
                 <li key={i} className="flex items-center gap-2">
