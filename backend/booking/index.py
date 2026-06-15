@@ -1,7 +1,29 @@
 import json
 import os
-import http.client
+import urllib.request
 import urllib.parse
+
+
+def send_telegram(bot_token: str, chat_id: str, text: str) -> bool:
+    """Отправка сообщения в Telegram через urllib"""
+    url = f'https://api.telegram.org/bot{bot_token}/sendMessage'
+    data = urllib.parse.urlencode({
+        'chat_id': chat_id,
+        'text': text,
+        'parse_mode': 'HTML',
+    }).encode('utf-8')
+
+    req = urllib.request.Request(url, data=data, method='POST')
+    req.add_header('Content-Type', 'application/x-www-form-urlencoded')
+
+    try:
+        with urllib.request.urlopen(req, timeout=8) as resp:
+            result = json.loads(resp.read().decode())
+            print(f"Telegram [{chat_id}] ok: {result.get('ok')}")
+            return result.get('ok', False)
+    except Exception as e:
+        print(f"Telegram [{chat_id}] error: {e}")
+        return False
 
 
 def handler(event: dict, context) -> dict:
@@ -30,46 +52,39 @@ def handler(event: dict, context) -> dict:
         return {
             'statusCode': 400,
             'headers': {'Access-Control-Allow-Origin': '*'},
-            'body': {'error': 'name and phone required'}
+            'body': json.dumps({'error': 'name and phone required'})
         }
 
-    bot_token = os.environ['TELEGRAM_BOT_TOKEN']
-    chat_ids = [os.environ['TELEGRAM_CHAT_ID'], '-1003708419944']
+    bot_token = os.environ.get('TELEGRAM_BOT_TOKEN', '')
+    chat_ids = [os.environ.get('TELEGRAM_CHAT_ID', ''), '-1003708419944']
 
     lines = [
-        '🥃 Новая заявка на бронь — G80',
+        '🥃 <b>Новая заявка на бронь — G80</b>',
         '',
-        f'Имя: {name}',
-        f'Телефон: {phone}',
+        f'👤 Имя: {name}',
+        f'📞 Телефон: {phone}',
     ]
     if date:
-        lines.append(f'Дата/время: {date}')
+        lines.append(f'📅 Дата/время: {date}')
     if guests:
-        lines.append(f'Гостей: {guests}')
+        lines.append(f'👥 Гостей: {guests}')
     if comment:
-        lines.append(f'Комментарий: {comment}')
+        lines.append(f'💬 Комментарий: {comment}')
 
     text = '\n'.join(lines)
 
+    sent = False
     for chat_id in chat_ids:
-        params = urllib.parse.urlencode({
-            'chat_id': chat_id,
-            'text': text,
-        })
-        conn = http.client.HTTPSConnection('api.telegram.org', timeout=10)
-        conn.request(
-            'POST',
-            f'/bot{bot_token}/sendMessage',
-            body=params,
-            headers={'Content-Type': 'application/x-www-form-urlencoded'}
-        )
-        resp = conn.getresponse()
-        resp_body = resp.read().decode()
-        conn.close()
-        print(f"Telegram [{chat_id}] response {resp.status}: {resp_body}")
+        if chat_id:
+            result = send_telegram(bot_token, chat_id, text)
+            if result:
+                sent = True
+
+    if not sent:
+        print("WARNING: Telegram delivery failed for all chat_ids")
 
     return {
         'statusCode': 200,
         'headers': {'Access-Control-Allow-Origin': '*'},
-        'body': {'success': True}
+        'body': json.dumps({'success': True})
     }
