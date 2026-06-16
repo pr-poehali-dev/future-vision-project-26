@@ -80,6 +80,11 @@ export function ServicesMenu() {
               <div>
                 <p className="text-white font-semibold font-open-sans-custom text-sm leading-tight">{item.name}</p>
                 {item.desc && <p className="text-gray-400 text-xs mt-0.5 font-open-sans-custom">{item.desc}</p>}
+                {i === 0 && (
+                  <span className="inline-block mt-1.5 text-xs font-open-sans-custom px-2 py-0.5 rounded-full bg-yellow-500/15 border border-yellow-500/30 text-yellow-400">
+                    только по будням
+                  </span>
+                )}
               </div>
               <div className="mt-auto pt-2 border-t border-white/10">
                 <span
