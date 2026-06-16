@@ -16,6 +16,7 @@ export function FloatingNavbar() {
   const navLinks = [
     { id: "features", label: "Меню" },
     { id: "pricing", label: "Напитки" },
+    { id: "services", label: "Функции" },
     { id: "about", label: "О баре" },
     { id: "contact", label: "Контакты" },
   ]

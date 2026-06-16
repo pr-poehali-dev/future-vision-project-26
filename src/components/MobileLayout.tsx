@@ -4,6 +4,7 @@ import { WorldCupBanner } from "@/components/WorldCupBanner"
 import { ShinyButton } from "@/components/ui/shiny-button"
 import { Feature } from "@/components/ui/feature-with-advantages"
 import { BentoPricing } from "@/components/ui/bento-pricing"
+import { ServicesMenu } from "@/components/ui/services-menu"
 import { ContactCard } from "@/components/ui/contact-card"
 import { AboutQuote } from "@/components/ui/about-quote"
 import { MailIcon, PhoneIcon, MapPinIcon, SendIcon } from "lucide-react"
@@ -111,6 +112,25 @@ export function MobileLayout() {
               </p>
             </div>
             <BentoPricing />
+          </div>
+        </section>
+
+        {/* Функции заведения */}
+        <section id="services" className="relative px-4 py-16">
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 z-0 size-full pointer-events-none bg-[radial-gradient(rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[size:12px_12px] opacity-30"
+          />
+          <div className="relative z-10 mx-auto w-full max-w-lg">
+            <div className="mb-8 text-center">
+              <h2 className="text-3xl font-extrabold tracking-tight text-white font-open-sans-custom [text-shadow:_0_4px_20px_rgb(0_0_0_/_60%)]">
+                Функции
+              </h2>
+              <p className="text-gray-300 mt-3 text-sm font-open-sans-custom [text-shadow:_0_2px_10px_rgb(0_0_0_/_50%)]">
+                Дополнительные возможности для вашего вечера
+              </p>
+            </div>
+            <ServicesMenu />
           </div>
         </section>
 
