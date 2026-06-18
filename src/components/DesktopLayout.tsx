@@ -117,7 +117,7 @@ export function DesktopLayout() {
         className="relative z-10 flex h-screen w-full overflow-x-auto overflow-y-hidden scroll-smooth snap-x snap-mandatory hide-scrollbar"
         style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
       >
-        <section id="home" className="flex min-w-full snap-start items-center justify-center px-4 py-16 md:py-20 relative">
+        <section id="home" className="flex min-w-full snap-start items-center justify-center px-8 py-16 md:py-20 relative">
           <div className="absolute inset-0 z-0">
             <img
               src="https://cdn.poehali.dev/projects/842b0b6f-f1be-4985-aa20-a468d555c6e1/bucket/a2f7818f-ebc5-49ee-940c-7a3771b641df.jpeg"
@@ -126,27 +126,28 @@ export function DesktopLayout() {
             />
             <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(10,4,40,0.4) 0%, rgba(20,5,60,0.2) 50%, rgba(10,4,40,0.6) 100%)" }} />
           </div>
-          {/* Neon bottom line */}
           <div className="absolute bottom-0 left-0 right-0 z-10 neon-divider" />
-          <div className="mx-auto max-w-4xl relative z-10 w-full">
-            <div className="text-center px-2">
-              <div className="mb-4 flex justify-center">
+
+          <div className="relative z-10 w-full max-w-7xl mx-auto grid grid-cols-2 gap-12 items-center">
+            {/* Левая колонка — заголовок и кнопки */}
+            <div className="flex flex-col items-start">
+              <div className="mb-4">
                 <span className="text-xs tracking-[0.4em] uppercase font-open-sans-custom neon-pulse px-5 py-1.5 rounded-full border border-purple-500/40 bg-purple-900/20 text-purple-300">
                   Донецк
                 </span>
               </div>
-              <h1 className="mb-5 text-balance text-4xl sm:text-5xl tracking-tight md:text-6xl lg:text-8xl"
+              <h1 className="mb-5 text-balance text-5xl tracking-tight lg:text-7xl xl:text-8xl"
                 style={{ color: "#fff" }}>
                 <span className="font-open-sans-custom not-italic neon-purple">Lounge</span>{" "}
                 <span className="font-serif italic" style={{ textShadow: "0 0 20px #f472b6, 0 0 40px #ec4899, 0 0 80px #be185d", color: "#fdf4ff" }}>Bar</span>{" "}
                 <span className="font-open-sans-custom not-italic neon-blue">G80</span>
               </h1>
-              <p className="mb-8 mx-auto max-w-lg text-pretty leading-relaxed font-thin font-open-sans-custom tracking-wide text-base md:text-xl"
+              <p className="mb-8 text-pretty leading-relaxed font-thin font-open-sans-custom tracking-wide text-lg md:text-xl"
                 style={{ color: "#e2d9f3", textShadow: "0 0 10px rgba(167,139,250,0.4)" }}>
                 Авторские коктейли, кальяны и живая атмосфера —{" "}
                 <span className="font-serif italic" style={{ color: "#f9a8d4", textShadow: "0 0 10px rgba(244,114,182,0.6)" }}>в самом сердце Донецка</span>
               </p>
-              <div className="flex justify-center items-center gap-3 flex-wrap">
+              <div className="flex items-center gap-3 flex-wrap">
                 <ShinyButton
                   className="px-6 py-3 text-sm md:text-base cursor-pointer"
                   onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "start" })}
@@ -169,22 +170,24 @@ export function DesktopLayout() {
                 </button>
               </div>
             </div>
-          </div>
-          <div className="mx-auto max-w-4xl relative z-10 w-full mt-8 px-2 flex flex-col gap-3">
-            <a
-              href="https://donetsk.qtickets.events/241451-project-x-vecherinka-s-basseynom-glavnyy-gost-goody"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group w-full flex items-center gap-4 rounded-2xl overflow-hidden border border-white/10 bg-black/40 backdrop-blur-md px-5 py-4 hover:bg-white/5 hover:border-white/20 transition-all duration-300"
-            >
-              <span className="text-3xl shrink-0">🏊</span>
-              <div className="flex-1 min-w-0">
-                <p className="text-white font-open-sans-custom font-bold text-base leading-tight">Тусовка у бассейна</p>
-                <p className="text-purple-300 text-xs font-open-sans-custom mt-0.5">Купить билет — нажми сюда</p>
-              </div>
-              <span className="shrink-0 text-white/40 group-hover:text-white/80 transition-colors text-lg">→</span>
-            </a>
-            <WorldCupBanner />
+
+            {/* Правая колонка — плашки */}
+            <div className="flex flex-col gap-3">
+              <a
+                href="https://donetsk.qtickets.events/241451-project-x-vecherinka-s-basseynom-glavnyy-gost-goody"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group w-full flex items-center gap-4 rounded-2xl overflow-hidden border border-white/10 bg-black/40 backdrop-blur-md px-5 py-4 hover:bg-white/5 hover:border-white/20 transition-all duration-300"
+              >
+                <span className="text-3xl shrink-0">🏊</span>
+                <div className="flex-1 min-w-0">
+                  <p className="text-white font-open-sans-custom font-bold text-base leading-tight">Тусовка у бассейна</p>
+                  <p className="text-purple-300 text-xs font-open-sans-custom mt-0.5">Купить билет — нажми сюда</p>
+                </div>
+                <span className="shrink-0 text-white/40 group-hover:text-white/80 transition-colors text-lg">→</span>
+              </a>
+              <WorldCupBanner />
+            </div>
           </div>
         </section>
 
