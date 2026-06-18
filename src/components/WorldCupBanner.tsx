@@ -1,5 +1,3 @@
-import { useState } from "react"
-
 const matches = [
   // 16 июня
   { date: "16 июня", day: "Пн", time: "22:00", team1: "🇫🇷 Франция", team2: "🇸🇳 Сенегал", group: "I" },
@@ -53,10 +51,6 @@ const groupColors: Record<string, string> = {
 }
 
 export function WorldCupBanner() {
-  const [expanded, setExpanded] = useState(false)
-
-  const visibleMatches = expanded ? matches : matches.slice(0, 5)
-
   return (
     <div className="w-full rounded-2xl overflow-hidden border border-white/10 bg-black/40 backdrop-blur-md">
       <div className="px-4 py-3 flex items-center gap-3 border-b border-white/10 bg-gradient-to-r from-green-900/40 via-black/0 to-yellow-900/40">
@@ -71,8 +65,8 @@ export function WorldCupBanner() {
         </div>
       </div>
 
-      <div className="divide-y divide-white/5">
-        {visibleMatches.map((m, i) => (
+      <div className="overflow-y-auto max-h-[50vh] divide-y divide-white/5" style={{ scrollbarWidth: "thin", scrollbarColor: "rgba(255,255,255,0.15) transparent" }}>
+        {matches.map((m, i) => (
           <div key={i} className="flex items-center gap-3 px-4 py-2.5 hover:bg-white/5 transition-colors">
             <div className="w-14 shrink-0 text-center">
               <p className="text-white/50 text-xs font-open-sans-custom">{m.day}</p>
@@ -90,13 +84,6 @@ export function WorldCupBanner() {
           </div>
         ))}
       </div>
-
-      <button
-        onClick={() => setExpanded(!expanded)}
-        className="w-full py-2.5 text-center text-sm text-white/50 hover:text-white/80 font-open-sans-custom transition-colors border-t border-white/10 hover:bg-white/5"
-      >
-        {expanded ? "Скрыть ▲" : `Показать все ${matches.length} матчей ▼`}
-      </button>
     </div>
   )
 }
