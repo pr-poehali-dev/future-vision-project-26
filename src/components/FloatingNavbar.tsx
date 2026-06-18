@@ -14,6 +14,7 @@ export function FloatingNavbar() {
   }
 
   const navLinks = [
+    { id: "worldcup", label: "⚽ ЧМ 2026" },
     { id: "features", label: "Меню" },
     { id: "pricing", label: "Напитки" },
     { id: "services", label: "Функции" },

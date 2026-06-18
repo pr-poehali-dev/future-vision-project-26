@@ -30,30 +30,10 @@ export function DesktopLayout() {
       const containerWidth = scrollContainer.offsetWidth
       const currentSection = Math.round(currentScroll / containerWidth)
 
-      if (currentSection === 2 && pricingSectionRef.current) {
+      if (currentSection === 3 && pricingSectionRef.current) {
         const pricingSection = pricingSectionRef.current
         const isAtTop = pricingSection.scrollTop === 0
         const isAtBottom = pricingSection.scrollTop + pricingSection.clientHeight >= pricingSection.scrollHeight - 1
-
-        if (delta > 0 && !isAtBottom) return
-        if (delta < 0 && !isAtTop) return
-
-        if (delta < 0 && isAtTop) {
-          e.preventDefault()
-          scrollContainer.scrollTo({ left: 1 * containerWidth, behavior: "smooth" })
-          return
-        }
-        if (delta > 0 && isAtBottom) {
-          e.preventDefault()
-          scrollContainer.scrollTo({ left: 3 * containerWidth, behavior: "smooth" })
-          return
-        }
-      }
-
-      if (currentSection === 3 && aboutSectionRef.current) {
-        const aboutSection = aboutSectionRef.current
-        const isAtTop = aboutSection.scrollTop === 0
-        const isAtBottom = aboutSection.scrollTop + aboutSection.clientHeight >= aboutSection.scrollHeight - 1
 
         if (delta > 0 && !isAtBottom) return
         if (delta < 0 && !isAtTop) return
@@ -70,7 +50,27 @@ export function DesktopLayout() {
         }
       }
 
-      if (currentSection === 4 && contactSectionRef.current) {
+      if (currentSection === 4 && aboutSectionRef.current) {
+        const aboutSection = aboutSectionRef.current
+        const isAtTop = aboutSection.scrollTop === 0
+        const isAtBottom = aboutSection.scrollTop + aboutSection.clientHeight >= aboutSection.scrollHeight - 1
+
+        if (delta > 0 && !isAtBottom) return
+        if (delta < 0 && !isAtTop) return
+
+        if (delta < 0 && isAtTop) {
+          e.preventDefault()
+          scrollContainer.scrollTo({ left: 3 * containerWidth, behavior: "smooth" })
+          return
+        }
+        if (delta > 0 && isAtBottom) {
+          e.preventDefault()
+          scrollContainer.scrollTo({ left: 5 * containerWidth, behavior: "smooth" })
+          return
+        }
+      }
+
+      if (currentSection === 5 && contactSectionRef.current) {
         const contactSection = contactSectionRef.current
         const isAtTop = contactSection.scrollTop === 0
         const isAtBottom = contactSection.scrollTop + contactSection.clientHeight >= contactSection.scrollHeight - 1
@@ -80,7 +80,7 @@ export function DesktopLayout() {
 
         if (delta < 0 && isAtTop) {
           e.preventDefault()
-          scrollContainer.scrollTo({ left: 3 * containerWidth, behavior: "smooth" })
+          scrollContainer.scrollTo({ left: 4 * containerWidth, behavior: "smooth" })
           return
         }
         if (delta > 0 && isAtBottom) {
@@ -94,7 +94,7 @@ export function DesktopLayout() {
       if (Math.abs(delta) > 10) {
         let targetSection = currentSection
         if (delta > 0) {
-          targetSection = Math.min(currentSection + 1, 4)
+          targetSection = Math.min(currentSection + 1, 5)
         } else {
           targetSection = Math.max(currentSection - 1, 0)
         }
@@ -171,7 +171,7 @@ export function DesktopLayout() {
               </div>
             </div>
 
-            {/* Правая колонка — плашки */}
+            {/* Правая колонка — плашка бассейна */}
             <div className="flex flex-col gap-3">
               <a
                 href="https://donetsk.qtickets.events/241451-project-x-vecherinka-s-basseynom-glavnyy-gost-goody"
@@ -186,8 +186,23 @@ export function DesktopLayout() {
                 </div>
                 <span className="shrink-0 text-white/40 group-hover:text-white/80 transition-colors text-lg">→</span>
               </a>
-              <WorldCupBanner />
             </div>
+          </div>
+        </section>
+
+        {/* ЧМ 2026 */}
+        <section id="worldcup" className="flex min-w-full snap-start items-center justify-center px-8 py-16 md:py-20 relative">
+          <div className="absolute inset-0 z-0 pointer-events-none bg-[radial-gradient(rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[size:12px_12px] opacity-30" />
+          <div className="relative z-10 w-full max-w-3xl mx-auto">
+            <div className="mb-8 text-center">
+              <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-white font-open-sans-custom [text-shadow:_0_4px_20px_rgb(0_0_0_/_60%)]">
+                Чемпионат мира 2026
+              </h2>
+              <p className="text-green-300 mt-3 text-sm md:text-base font-open-sans-custom">
+                Смотрим все матчи в G80 Lounge Bar
+              </p>
+            </div>
+            <WorldCupBanner />
           </div>
         </section>
 
