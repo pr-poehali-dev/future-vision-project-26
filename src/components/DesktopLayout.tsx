@@ -178,6 +178,15 @@ export function DesktopLayout() {
                 <a href="tel:+79494305174" className="btn-ghost text-sm px-5 py-3">
                   <span>📞</span><span>Позвонить</span>
                 </a>
+                <a
+                  href="https://t.me/vadimbg80"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-ghost text-sm px-5 py-3"
+                  style={{ borderColor: "rgba(38,169,224,0.35)", background: "rgba(38,169,224,0.07)" }}
+                >
+                  <span>✈️</span><span>Telegram</span>
+                </a>
                 <button onClick={() => navigate("/tips")} className="btn-ghost text-sm px-5 py-3">
                   <span>💛</span><span>Чаевые</span>
                 </button>

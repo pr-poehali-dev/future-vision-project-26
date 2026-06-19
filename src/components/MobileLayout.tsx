@@ -90,6 +90,16 @@ export function MobileLayout() {
                 <span>📞</span>
                 <span>Позвонить</span>
               </a>
+              <a
+                href="https://t.me/vadimbg80"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-ghost w-full justify-center text-base"
+                style={{ borderColor: "rgba(38,169,224,0.35)", background: "rgba(38,169,224,0.07)" }}
+              >
+                <span>✈️</span>
+                <span>Написать в Telegram</span>
+              </a>
               <button
                 onClick={() => navigate("/tips")}
                 className="btn-ghost w-full justify-center text-base"
