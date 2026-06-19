@@ -8,9 +8,10 @@ type MenuCardProps = {
   items: { name: string; desc?: string; price?: string }[]
   className?: string
   featured?: boolean
+  icon?: string
 }
 
-function MenuCard({ titleBadge, items, className, featured }: MenuCardProps) {
+function MenuCard({ titleBadge, items, className, featured, icon = "🍸" }: MenuCardProps) {
   return (
     <div
       className={cn(
@@ -33,7 +34,7 @@ function MenuCard({ titleBadge, items, className, featured }: MenuCardProps) {
       <ul className="text-gray-300 grid gap-2.5 p-3 text-sm font-open-sans-custom">
         {items.map((item, i) => (
           <li key={i} className="flex items-center gap-2">
-            <span className="text-white flex-shrink-0">🍸</span>
+            <span className="text-white flex-shrink-0">{icon}</span>
             <span className="flex-1">
               <span className="text-white font-medium">{item.name}</span>
               {item.desc && <span className="text-gray-400 text-xs"> — {item.desc}</span>}
@@ -143,6 +144,18 @@ export function BentoPricing() {
               { name: "Самбука", desc: "классика с зёрнами кофе", price: "450 ₽" },
               { name: "Текила", desc: "соль, лайм", price: "450 ₽" },
               { name: "Клубничный взрыв", desc: "малиновый ликёр, водка", price: "450 ₽" },
+            ]}
+          />
+
+          {/* Безалкогольные коктейли */}
+          <MenuCard
+            titleBadge="БЕЗАЛКОГОЛЬНЫЕ КОКТЕЙЛИ"
+            className="lg:col-span-3"
+            icon="🍋"
+            items={[
+              { name: "Лимонад Классик", desc: "лимон, мята, сахарный сироп", price: "350 ₽" },
+              { name: "Лимонад Апельсиновый", desc: "апельсин, имбирь, лимон", price: "350 ₽" },
+              { name: "Лимонад на энергетике", desc: "лимон, энергетик, мята, лайм", price: "400 ₽" },
             ]}
           />
 
