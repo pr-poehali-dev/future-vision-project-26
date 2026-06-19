@@ -169,12 +169,12 @@ export function DesktopLayout() {
               </p>
 
               <div className="flex items-center gap-3 flex-wrap">
-                <ShinyButton
-                  className="px-7 py-3 text-sm cursor-pointer"
+                <button
                   onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "start" })}
+                  className="btn-ghost text-sm px-5 py-3"
                 >
-                  Забронировать стол
-                </ShinyButton>
+                  <span>🍸</span><span>Забронировать стол</span>
+                </button>
                 <a href="tel:+79494305174" className="btn-ghost text-sm px-5 py-3">
                   <span>📞</span><span>Позвонить</span>
                 </a>
@@ -183,7 +183,6 @@ export function DesktopLayout() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-ghost text-sm px-5 py-3"
-                  style={{ borderColor: "rgba(38,169,224,0.35)", background: "rgba(38,169,224,0.07)" }}
                 >
                   <span>✈️</span><span>Telegram</span>
                 </a>

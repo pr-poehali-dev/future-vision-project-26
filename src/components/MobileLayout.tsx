@@ -77,12 +77,13 @@ export function MobileLayout() {
 
             {/* CTA buttons */}
             <div className="flex flex-col items-center gap-3 w-full max-w-xs mx-auto">
-              <ShinyButton
-                className="w-full px-6 py-4 text-base cursor-pointer"
+              <button
                 onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+                className="btn-ghost w-full justify-center text-base"
               >
-                Забронировать стол
-              </ShinyButton>
+                <span>🍸</span>
+                <span>Забронировать стол</span>
+              </button>
               <a
                 href="tel:+79494305174"
                 className="btn-ghost w-full justify-center text-base"
@@ -95,7 +96,6 @@ export function MobileLayout() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-ghost w-full justify-center text-base"
-                style={{ borderColor: "rgba(38,169,224,0.35)", background: "rgba(38,169,224,0.07)" }}
               >
                 <span>✈️</span>
                 <span>Написать в Telegram</span>
