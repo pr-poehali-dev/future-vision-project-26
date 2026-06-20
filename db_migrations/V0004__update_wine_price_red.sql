@@ -1,0 +1,1 @@
+UPDATE t_p17413487_future_vision_projec.menu_items SET price = 4000 WHERE id = 47;
