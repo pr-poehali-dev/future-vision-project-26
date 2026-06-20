@@ -240,7 +240,7 @@ export function BentoPricing() {
                       <span>🥂</span><span>{item.name}</span>
                     </li>
                   ))}
-                  <li className="text-white/50 text-xs">бокал 500 ₽ / бутылка 2 000 ₽</li>
+                  <li className="text-white/50 text-xs">бокал 500 ₽ / бутылка 2 500 ₽</li>
                 </ul>
               </div>
               <div>
@@ -254,7 +254,7 @@ export function BentoPricing() {
                       <span>🍷</span><span>{item.name}</span>
                     </li>
                   ))}
-                  <li className="text-white/50 text-xs">бокал 500 ₽ / бутылка 2 000 ₽</li>
+                  <li className="text-white/50 text-xs">бокал 500 ₽ / бутылка 4 000 ₽</li>
                 </ul>
               </div>
 
