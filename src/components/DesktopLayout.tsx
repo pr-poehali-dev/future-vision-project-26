@@ -36,6 +36,7 @@ export function DesktopLayout() {
   const navigate = useNavigate()
   const scrollContainerRef = useRef<HTMLDivElement>(null)
   const pricingSectionRef = useRef<HTMLDivElement>(null)
+  const servicesSectionRef = useRef<HTMLDivElement>(null)
   const aboutSectionRef = useRef<HTMLDivElement>(null)
   const contactSectionRef = useRef<HTMLDivElement>(null)
 
@@ -67,10 +68,10 @@ export function DesktopLayout() {
         }
       }
 
-      if (currentSection === 4 && aboutSectionRef.current) {
-        const aboutSection = aboutSectionRef.current
-        const isAtTop = aboutSection.scrollTop === 0
-        const isAtBottom = aboutSection.scrollTop + aboutSection.clientHeight >= aboutSection.scrollHeight - 1
+      if (currentSection === 4 && servicesSectionRef.current) {
+        const servicesSection = servicesSectionRef.current
+        const isAtTop = servicesSection.scrollTop === 0
+        const isAtBottom = servicesSection.scrollTop + servicesSection.clientHeight >= servicesSection.scrollHeight - 1
         if (delta > 0 && !isAtBottom) return
         if (delta < 0 && !isAtTop) return
         if (delta < 0 && isAtTop) {
@@ -85,7 +86,25 @@ export function DesktopLayout() {
         }
       }
 
-      if (currentSection === 5 && contactSectionRef.current) {
+      if (currentSection === 5 && aboutSectionRef.current) {
+        const aboutSection = aboutSectionRef.current
+        const isAtTop = aboutSection.scrollTop === 0
+        const isAtBottom = aboutSection.scrollTop + aboutSection.clientHeight >= aboutSection.scrollHeight - 1
+        if (delta > 0 && !isAtBottom) return
+        if (delta < 0 && !isAtTop) return
+        if (delta < 0 && isAtTop) {
+          e.preventDefault()
+          scrollContainer.scrollTo({ left: 4 * containerWidth, behavior: "smooth" })
+          return
+        }
+        if (delta > 0 && isAtBottom) {
+          e.preventDefault()
+          scrollContainer.scrollTo({ left: 6 * containerWidth, behavior: "smooth" })
+          return
+        }
+      }
+
+      if (currentSection === 6 && contactSectionRef.current) {
         const contactSection = contactSectionRef.current
         const isAtTop = contactSection.scrollTop === 0
         const isAtBottom = contactSection.scrollTop + contactSection.clientHeight >= contactSection.scrollHeight - 1
@@ -93,7 +112,7 @@ export function DesktopLayout() {
         if (delta < 0 && !isAtTop) return
         if (delta < 0 && isAtTop) {
           e.preventDefault()
-          scrollContainer.scrollTo({ left: 4 * containerWidth, behavior: "smooth" })
+          scrollContainer.scrollTo({ left: 5 * containerWidth, behavior: "smooth" })
           return
         }
         if (delta > 0 && isAtBottom) {
@@ -105,7 +124,7 @@ export function DesktopLayout() {
       e.preventDefault()
       if (Math.abs(delta) > 10) {
         let targetSection = currentSection
-        if (delta > 0) targetSection = Math.min(currentSection + 1, 5)
+        if (delta > 0) targetSection = Math.min(currentSection + 1, 6)
         else targetSection = Math.max(currentSection - 1, 0)
         scrollContainer.scrollTo({ left: targetSection * containerWidth, behavior: "smooth" })
       }
@@ -253,6 +272,23 @@ export function DesktopLayout() {
               subtitle="Авторские коктейли, шоты, виски, вина, кальяны и снэки"
             />
             <BentoPricing />
+          </div>
+        </section>
+
+        {/* ── Функции ──────────────────────────────────── */}
+        <section
+          id="services"
+          ref={servicesSectionRef}
+          className="relative min-w-full snap-start overflow-y-auto px-10 pt-24 pb-20 hide-scrollbar"
+          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+        >
+          <div className="relative z-10 mx-auto w-full max-w-5xl">
+            <SectionHeading
+              label="Возможности"
+              title="Функции и услуги"
+              subtitle="Аренда зала, почасовые услуги и дополнительные возможности"
+            />
+            <ServicesMenu />
           </div>
         </section>
 
