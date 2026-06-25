@@ -44,8 +44,10 @@ def handler(event: dict, context) -> dict:
             (ip, user_agent, page)
         )
         conn.commit()
+        cur.execute(f"SELECT COUNT(*) FROM {SCHEMA}.visitors")
+        total = cur.fetchone()[0]
         conn.close()
-        return {"statusCode": 200, "headers": CORS_HEADERS, "body": json.dumps({"ok": True})}
+        return {"statusCode": 200, "headers": CORS_HEADERS, "body": json.dumps({"ok": True, "total": total})}
 
     if method == "GET":
         cur.execute(f"SELECT COUNT(*) FROM {SCHEMA}.visitors")

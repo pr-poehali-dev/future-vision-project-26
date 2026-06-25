@@ -10,13 +10,36 @@ export type VisitorStats = {
   daily: { date: string; count: number }[]
 }
 
+async function fetchWithTimeout(url: string, options: RequestInit = {}, ms = 5000) {
+  const controller = new AbortController()
+  const id = setTimeout(() => controller.abort(), ms)
+  try {
+    const res = await fetch(url, { ...options, signal: controller.signal })
+    clearTimeout(id)
+    return res
+  } catch (e) {
+    clearTimeout(id)
+    throw e
+  }
+}
+
+// Глобальный кеш — чтобы не делать два запроса при рендере
+let cachedTotal: number | null = null
+
 export function useTrackVisit() {
   useEffect(() => {
-    fetch(VISITORS_URL, {
+    // Отправляем визит и сохраняем total в кеш
+    fetchWithTimeout(VISITORS_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ page: window.location.pathname }),
-    }).catch(() => {})
+    })
+      .then((r) => r.json())
+      .then((data) => {
+        const parsed = typeof data === "string" ? JSON.parse(data) : data
+        if (parsed.total !== undefined) cachedTotal = parsed.total
+      })
+      .catch(() => {})
   }, [])
 }
 
@@ -26,7 +49,7 @@ export function useVisitorStats() {
 
   const load = () => {
     setLoading(true)
-    fetch(VISITORS_URL)
+    fetchWithTimeout(VISITORS_URL)
       .then((r) => r.json())
       .then((data) => {
         const parsed = typeof data === "string" ? JSON.parse(data) : data
@@ -39,4 +62,22 @@ export function useVisitorStats() {
   useEffect(() => { load() }, [])
 
   return { stats, loading, reload: load }
+}
+
+export function useVisitorTotal() {
+  const [total, setTotal] = useState<number | null>(cachedTotal)
+
+  useEffect(() => {
+    if (cachedTotal !== null) { setTotal(cachedTotal); return }
+    fetchWithTimeout(VISITORS_URL)
+      .then((r) => r.json())
+      .then((data) => {
+        const parsed = typeof data === "string" ? JSON.parse(data) : data
+        cachedTotal = parsed.total
+        setTotal(parsed.total)
+      })
+      .catch(() => {})
+  }, [])
+
+  return total
 }

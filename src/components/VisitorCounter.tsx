@@ -1,19 +1,7 @@
-import { useEffect, useState } from "react"
-
-const VISITORS_URL = "https://functions.poehali.dev/7bf1d74b-fd3b-4ff4-b04e-10724edc25b3"
+import { useVisitorTotal } from "@/hooks/use-visitors"
 
 export function VisitorCounter() {
-  const [total, setTotal] = useState<number | null>(null)
-
-  useEffect(() => {
-    fetch(VISITORS_URL)
-      .then((r) => r.json())
-      .then((data) => {
-        const parsed = typeof data === "string" ? JSON.parse(data) : data
-        setTotal(parsed.total)
-      })
-      .catch(() => {})
-  }, [])
+  const total = useVisitorTotal()
 
   if (total === null) return null
 
