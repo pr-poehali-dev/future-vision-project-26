@@ -1,0 +1,19 @@
+{
+  "tests": [
+    {
+      "name": "GET stats",
+      "method": "GET",
+      "path": "/",
+      "expectedStatus": 200,
+      "bodyMatcher": "none"
+    },
+    {
+      "name": "POST visit",
+      "method": "POST",
+      "path": "/",
+      "body": {"page": "/"},
+      "expectedStatus": 200,
+      "bodyMatcher": "none"
+    }
+  ]
+}

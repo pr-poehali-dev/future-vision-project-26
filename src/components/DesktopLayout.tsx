@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react"
 import { useNavigate } from "react-router-dom"
 import { LiquidMetalBackground } from "@/components/LiquidMetalBackground"
 import { FloatingNavbar } from "@/components/FloatingNavbar"
+import { VisitorCounter } from "@/components/VisitorCounter"
 import { WorldCupBanner } from "@/components/WorldCupBanner"
 import { ShinyButton } from "@/components/ui/shiny-button"
 import { Feature } from "@/components/ui/feature-with-advantages"
@@ -208,6 +209,9 @@ export function DesktopLayout() {
                 <button onClick={() => navigate("/tips")} className="btn-ghost text-sm px-5 py-3">
                   <span>💛</span><span>Чаевые</span>
                 </button>
+              </div>
+              <div className="mt-4">
+                <VisitorCounter />
               </div>
             </div>
 

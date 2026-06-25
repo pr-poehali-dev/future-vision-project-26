@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import Icon from "@/components/ui/icon"
+import { useVisitorStats } from "@/hooks/use-visitors"
 
 const MENU_URL = "https://functions.poehali.dev/7d21c12e-b792-4122-b83e-b8fe70fe4794"
 
@@ -53,6 +54,7 @@ export default function Admin() {
   const [editItem, setEditItem] = useState<EditForm | null>(null)
   const [saving, setSaving] = useState(false)
   const [savedPassword, setSavedPassword] = useState("")
+  const { stats, loading: statsLoading, reload: reloadStats } = useVisitorStats()
 
   const fetchItems = async (pwd: string) => {
     setLoading(true)
@@ -157,6 +159,13 @@ export default function Admin() {
       <div className="flex h-[calc(100vh-65px)]">
         {/* Sidebar */}
         <div className="w-56 border-r border-white/10 bg-black/20 overflow-y-auto flex-shrink-0">
+          <button
+            onClick={() => setActiveCategory("__stats__")}
+            className={`w-full text-left px-4 py-3 text-sm border-b border-white/10 transition-colors flex items-center gap-2
+              ${activeCategory === "__stats__" ? "bg-purple-500/20 text-purple-300" : "text-gray-400 hover:bg-white/5 hover:text-white"}`}
+          >
+            <span>📊</span><span>Статистика</span>
+          </button>
           {Object.entries(CATEGORIES).map(([key, label]) => {
             const count = items.filter(i => i.category === key).length
             return (
@@ -175,6 +184,59 @@ export default function Admin() {
 
         {/* Content */}
         <div className="flex-1 overflow-y-auto p-4">
+
+          {activeCategory === "__stats__" ? (
+            <div>
+              <div className="flex items-center justify-between mb-4">
+                <h2 className="text-white font-semibold text-lg">Статистика посетителей</h2>
+                <button onClick={reloadStats} className="text-xs text-gray-400 hover:text-white px-3 py-1 rounded bg-white/5 border border-white/10">
+                  Обновить
+                </button>
+              </div>
+              {statsLoading ? (
+                <p className="text-gray-400">Загрузка...</p>
+              ) : stats ? (
+                <div className="flex flex-col gap-4">
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                    {[
+                      { label: "За сегодня", value: stats.today },
+                      { label: "За неделю", value: stats.week },
+                      { label: "За месяц", value: stats.month },
+                      { label: "Всего", value: stats.total },
+                    ].map(({ label, value }) => (
+                      <div key={label} className="bg-white/5 border border-white/10 rounded-xl p-4 text-center">
+                        <p className="text-3xl font-bold text-purple-300">{value.toLocaleString("ru-RU")}</p>
+                        <p className="text-gray-400 text-xs mt-1">{label}</p>
+                      </div>
+                    ))}
+                  </div>
+                  {stats.daily.length > 0 && (
+                    <div className="bg-white/5 border border-white/10 rounded-xl p-4">
+                      <p className="text-white text-sm font-semibold mb-3">По дням (последние 30 дней)</p>
+                      <div className="flex flex-col gap-1.5">
+                        {stats.daily.map(({ date, count }) => {
+                          const max = Math.max(...stats.daily.map(d => d.count))
+                          const pct = max > 0 ? (count / max) * 100 : 0
+                          return (
+                            <div key={date} className="flex items-center gap-3 text-xs">
+                              <span className="text-gray-500 w-24 flex-shrink-0">{date}</span>
+                              <div className="flex-1 bg-white/5 rounded-full h-2">
+                                <div className="bg-purple-500 h-2 rounded-full" style={{ width: `${pct}%` }} />
+                              </div>
+                              <span className="text-gray-300 w-6 text-right">{count}</span>
+                            </div>
+                          )
+                        })}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <p className="text-gray-500">Нет данных</p>
+              )}
+            </div>
+          ) : (
+          <>
           <h2 className="text-white font-semibold text-lg mb-4">{CATEGORIES[activeCategory]}</h2>
 
           {loading ? (
@@ -211,6 +273,8 @@ export default function Admin() {
                 </div>
               ))}
             </div>
+          )}
+          </>
           )}
         </div>
       </div>
