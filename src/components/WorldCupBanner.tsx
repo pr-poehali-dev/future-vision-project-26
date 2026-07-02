@@ -1,53 +1,45 @@
-const matches = [
-  // 16 июня
-  { date: "16 июня", day: "Пн", time: "22:00", team1: "🇫🇷 Франция", team2: "🇸🇳 Сенегал", group: "I" },
-  // 17 июня
-  { date: "17 июня", day: "Вт", time: "01:00", team1: "🇮🇶 Ирак", team2: "🇳🇴 Норвегия", group: "J" },
-  { date: "17 июня", day: "Вт", time: "04:00", team1: "🇦🇷 Аргентина", team2: "🇩🇿 Алжир", group: "D" },
-  { date: "17 июня", day: "Вт", time: "07:00", team1: "🇦🇹 Австрия", team2: "🇯🇴 Иордания", group: "K" },
-  { date: "17 июня", day: "Вт", time: "20:00", team1: "🇵🇹 Португалия", team2: "🇨🇩 ДР Конго", group: "H" },
-  { date: "17 июня", day: "Вт", time: "23:00", team1: "🏴󠁧󠁢󠁥󠁮󠁧󠁿 Англия", team2: "🇭🇷 Хорватия", group: "B" },
-  // 18 июня
-  { date: "18 июня", day: "Ср", time: "02:00", team1: "🇬🇭 Гана", team2: "🇵🇦 Панама", group: "A" },
-  { date: "18 июня", day: "Ср", time: "05:00", team1: "🇺🇿 Узбекистан", team2: "🇨🇴 Колумбия", group: "L" },
-  { date: "18 июня", day: "Ср", time: "19:00", team1: "🇨🇿 Чехия", team2: "🇿🇦 ЮАР", group: "F" },
-  { date: "18 июня", day: "Ср", time: "22:00", team1: "🇨🇭 Швейцария", team2: "🇧🇦 Босния", group: "A" },
-  // 19 июня
-  { date: "19 июня", day: "Чт", time: "01:00", team1: "🇨🇦 Канада", team2: "🇶🇦 Катар", group: "A" },
-  { date: "19 июня", day: "Чт", time: "04:00", team1: "🇲🇽 Мексика", team2: "🇰🇷 Южная Корея", group: "F" },
-  { date: "19 июня", day: "Чт", time: "22:00", team1: "🇺🇸 США", team2: "🇦🇺 Австралия", group: "D" },
-  // 20 июня
-  { date: "20 июня", day: "Пт", time: "01:00", team1: "🏴󠁧󠁢󠁳󠁣󠁴󠁿 Шотландия", team2: "🇲🇦 Марокко", group: "C" },
-  { date: "20 июня", day: "Пт", time: "03:30", team1: "🇧🇷 Бразилия", team2: "🇭🇹 Гаити", group: "C" },
-  { date: "20 июня", day: "Пт", time: "06:00", team1: "🇹🇷 Турция", team2: "🇵🇾 Парагвай", group: "D" },
-  { date: "20 июня", day: "Пт", time: "20:00", team1: "🇳🇱 Нидерланды", team2: "🇸🇪 Швеция", group: "F" },
-  { date: "20 июня", day: "Пт", time: "23:00", team1: "🇩🇪 Германия", team2: "🇨🇮 Кот-д'Ивуар", group: "E" },
-  // 21 июня
-  { date: "21 июня", day: "Сб", time: "03:00", team1: "🇪🇨 Эквадор", team2: "🇨🇼 Кюрасао", group: "E" },
-  { date: "21 июня", day: "Сб", time: "07:00", team1: "🇹🇳 Тунис", team2: "🇯🇵 Япония", group: "F" },
-  { date: "21 июня", day: "Сб", time: "19:00", team1: "🇪🇸 Испания", team2: "🇸🇦 Саудовская Аравия", group: "H" },
-  { date: "21 июня", day: "Сб", time: "22:00", team1: "🇧🇪 Бельгия", team2: "🇮🇷 Иран", group: "G" },
-  // 22 июня
-  { date: "22 июня", day: "Вс", time: "01:00", team1: "🇺🇾 Уругвай", team2: "🇨🇻 Кабо-Верде", group: "H" },
-  { date: "22 июня", day: "Вс", time: "04:00", team1: "🇸🇳 Сенегал", team2: "🇮🇶 Ирак", group: "I" },
-  // 23 июня
-  { date: "23 июня", day: "Пн", time: "02:00", team1: "🇳🇴 Норвегия", team2: "🇫🇷 Франция", group: "I" },
-  { date: "23 июня", day: "Пн", time: "22:00", team1: "🏴󠁧󠁢󠁥󠁮󠁧󠁿 Англия", team2: "🇬🇭 Гана", group: "B" },
+type Match = {
+  date: string
+  day: string
+  time: string
+  team1: string
+  team2: string
+  stage: string
+  result?: string
+}
+
+const matches: Match[] = [
+  // Результаты 1/16
+  { date: "28 июня", day: "Вс", time: "22:00", team1: "🇿🇦 ЮАР", team2: "🇨🇦 Канада", stage: "1/16", result: "0:1" },
+  { date: "29 июня", day: "Пн", time: "20:00", team1: "🇧🇷 Бразилия", team2: "🇯🇵 Япония", stage: "1/16", result: "2:1" },
+  { date: "29 июня", day: "Пн", time: "23:30", team1: "🇩🇪 Германия", team2: "🇵🇾 Парагвай", stage: "1/16", result: "1:1 (3:4 пен)" },
+  { date: "30 июня", day: "Вт", time: "04:00", team1: "🇳🇱 Нидерланды", team2: "🇲🇦 Марокко", stage: "1/16", result: "1:1 (2:3 пен)" },
+  { date: "30 июня", day: "Вт", time: "20:00", team1: "🇨🇮 Кот-д'Ивуар", team2: "🇳🇴 Норвегия", stage: "1/16", result: "1:2" },
+  { date: "1 июля", day: "Ср", time: "00:00", team1: "🇫🇷 Франция", team2: "🇸🇪 Швеция", stage: "1/16", result: "3:0" },
+  { date: "1 июля", day: "Ср", time: "04:00", team1: "🇲🇽 Мексика", team2: "🇪🇨 Эквадор", stage: "1/16", result: "2:0" },
+  { date: "1 июля", day: "Ср", time: "19:00", team1: "🏴󠁧󠁢󠁥󠁮󠁧󠁿 Англия", team2: "🇨🇩 ДР Конго", stage: "1/16", result: "2:1" },
+  { date: "1 июля", day: "Ср", time: "23:00", team1: "🇧🇪 Бельгия", team2: "🇸🇳 Сенегал", stage: "1/16", result: "3:2 д.в." },
+  { date: "2 июля", day: "Чт", time: "03:00", team1: "🇺🇸 США", team2: "🇧🇦 Босния", stage: "1/16", result: "2:0" },
+  { date: "2 июля", day: "Чт", time: "22:00", team1: "🇪🇸 Испания", team2: "🇦🇹 Австрия", stage: "1/16", result: "?" },
+  { date: "3 июля", day: "Пт", time: "02:00", team1: "🇵🇹 Португалия", team2: "🇭🇷 Хорватия", stage: "1/16", result: "?" },
+  { date: "3 июля", day: "Пт", time: "06:00", team1: "🇨🇭 Швейцария", team2: "🇩🇿 Алжир", stage: "1/16", result: "?" },
+  { date: "3 июля", day: "Сб", time: "21:00", team1: "🇦🇺 Австралия", team2: "🇪🇬 Египет", stage: "1/16", result: "?" },
+  { date: "4 июля", day: "Вс", time: "01:00", team1: "🇦🇷 Аргентина", team2: "🇨🇻 Кабо-Верде", stage: "1/16", result: "?" },
+  { date: "4 июля", day: "Вс", time: "04:30", team1: "🇨🇴 Колумбия", team2: "🇬🇭 Гана", stage: "1/16", result: "?" },
+  // 1/8 финала
+  { date: "4 июля", day: "Вс", time: "20:00", team1: "🇨🇦 Канада", team2: "🇲🇦 Марокко", stage: "1/8" },
+  { date: "5 июля", day: "Пн", time: "00:00", team1: "🇵🇾 Парагвай", team2: "🇫🇷 Франция", stage: "1/8" },
+  { date: "5 июля", day: "Пн", time: "23:00", team1: "🇧🇷 Бразилия", team2: "🇳🇴 Норвегия", stage: "1/8" },
+  { date: "6 июля", day: "Вт", time: "03:00", team1: "🇲🇽 Мексика", team2: "🏴󠁧󠁢󠁥󠁮󠁧󠁿 Англия", stage: "1/8" },
+  { date: "6 июля", day: "Вт", time: "22:00", team1: "🇧🇪 Бельгия", team2: "🇺🇸 США", stage: "1/8" },
+  { date: "7 июля", day: "Ср", time: "03:00", team1: "Победитель (Исп/Авт)", team2: "Победитель (Пор/Хор)", stage: "1/8" },
+  { date: "7 июля", day: "Ср", time: "19:00", team1: "Победитель (Арг/КВ)", team2: "Победитель (Швейц/Алж)", stage: "1/8" },
+  { date: "7 июля", day: "Ср", time: "23:00", team1: "Победитель (Авст/Ег)", team2: "Победитель (Кол/Гана)", stage: "1/8" },
 ]
 
-const groupColors: Record<string, string> = {
-  A: "bg-purple-500/20 text-purple-300",
-  B: "bg-blue-500/20 text-blue-300",
-  C: "bg-green-500/20 text-green-300",
-  D: "bg-yellow-500/20 text-yellow-300",
-  E: "bg-orange-500/20 text-orange-300",
-  F: "bg-pink-500/20 text-pink-300",
-  G: "bg-cyan-500/20 text-cyan-300",
-  H: "bg-red-500/20 text-red-300",
-  I: "bg-indigo-500/20 text-indigo-300",
-  J: "bg-teal-500/20 text-teal-300",
-  K: "bg-lime-500/20 text-lime-300",
-  L: "bg-amber-500/20 text-amber-300",
+const stageColors: Record<string, string> = {
+  "1/16": "bg-indigo-500/20 text-indigo-300",
+  "1/8":  "bg-purple-500/20 text-purple-300",
 }
 
 export function WorldCupBanner() {
@@ -57,7 +49,7 @@ export function WorldCupBanner() {
         <span className="text-2xl">⚽</span>
         <div className="flex-1">
           <p className="text-white font-open-sans-custom font-bold text-base leading-tight">Чемпионат мира 2026</p>
-          <p className="text-green-300 text-xs font-open-sans-custom">Смотрим все матчи в G80 Lounge Bar</p>
+          <p className="text-green-300 text-xs font-open-sans-custom">Идёт плей-офф! Смотрим все матчи в G80</p>
         </div>
         <div className="flex items-center gap-1 px-2 py-1 rounded-full bg-red-500/20 border border-red-400/30">
           <span className="w-1.5 h-1.5 rounded-full bg-red-400 animate-pulse" />
@@ -75,11 +67,15 @@ export function WorldCupBanner() {
             </div>
             <div className="flex-1 flex items-center justify-between gap-2 min-w-0">
               <span className="text-white text-sm font-open-sans-custom truncate">{m.team1}</span>
-              <span className="text-white/40 text-xs font-open-sans-custom shrink-0">vs</span>
+              {m.result ? (
+                <span className={`shrink-0 text-xs font-bold font-open-sans-custom px-2 py-0.5 rounded ${m.result === "?" ? "text-white/30" : "text-yellow-300"}`}>{m.result === "?" ? "vs" : m.result}</span>
+              ) : (
+                <span className="text-white/40 text-xs font-open-sans-custom shrink-0">vs</span>
+              )}
               <span className="text-white text-sm font-open-sans-custom truncate text-right">{m.team2}</span>
             </div>
-            <span className={`shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold font-open-sans-custom ${groupColors[m.group] || "bg-white/10 text-white/60"}`}>
-              {m.group}
+            <span className={`shrink-0 px-2 h-6 rounded-full flex items-center justify-center text-xs font-bold font-open-sans-custom ${stageColors[m.stage] || "bg-white/10 text-white/60"}`}>
+              {m.stage}
             </span>
           </div>
         ))}

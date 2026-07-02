@@ -126,7 +126,7 @@ export function MobileLayout() {
             >
               <span className="text-2xl shrink-0">🏊</span>
               <div className="flex-1 min-w-0">
-                <p className="text-white font-open-sans-custom font-semibold text-sm leading-tight">Тусовка у бассейна</p>
+                <p className="text-white font-open-sans-custom font-semibold text-sm leading-tight">Тусовка на баре</p>
                 <p className="font-open-sans-custom font-normal text-xs mt-0.5" style={{ color: "rgba(216,180,254,0.7)" }}>Купить билет — нажми сюда</p>
               </div>
               <span className="shrink-0 text-white/30 group-hover:text-white/70 transition-colors">→</span>

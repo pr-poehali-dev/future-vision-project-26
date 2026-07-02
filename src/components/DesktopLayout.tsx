@@ -225,7 +225,7 @@ export function DesktopLayout() {
               >
                 <span className="text-3xl shrink-0">🏊</span>
                 <div className="flex-1 min-w-0">
-                  <p className="text-white font-open-sans-custom font-semibold text-base leading-tight">Тусовка у бассейна</p>
+                  <p className="text-white font-open-sans-custom font-semibold text-base leading-tight">Тусовка на баре</p>
                   <p className="font-open-sans-custom font-normal text-xs mt-1" style={{ color: "rgba(216,180,254,0.65)" }}>Купить билет — нажми сюда</p>
                 </div>
                 <span className="shrink-0 text-white/25 group-hover:text-white/70 transition-colors text-lg">→</span>
