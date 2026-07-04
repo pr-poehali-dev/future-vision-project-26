@@ -220,7 +220,8 @@ export function BentoPricing() {
                   {[
                     { name: "Stella Artois", price: "350 ₽" },
                     { name: "Corona", price: "400 ₽" },
-                    { name: "Разливное", price: "250 ₽" },
+                    { name: "Green Beat", price: "300 ₽" },
+                    { name: "Bud", price: "340 ₽" },
                   ].map((item, i) => (
                     <li key={i} className="flex items-center justify-between gap-1.5">
                       <span className="flex items-center gap-1.5"><span>🍺</span><span>{item.name}</span></span>
