@@ -175,7 +175,7 @@ export function BentoPricing() {
             </div>
             <ul className="text-gray-300 grid gap-2.5 p-3 text-sm font-open-sans-custom">
               {[
-                { name: "Jack Daniel's", type: "виски", shot: "550 ₽", bottle: "6 500 ₽" },
+                { name: "Jack Daniel's", type: "виски", shot: "550 ₽", bottle: "7 500 ₽" },
                 { name: "Jim Beam", type: "виски", shot: "500 ₽", bottle: "5 500 ₽" },
                 { name: "Jameson", type: "виски", shot: "550 ₽", bottle: "8 000 ₽" },
                 { name: "Ballantine's", type: "виски", shot: "500 ₽", bottle: "5 000 ₽" },
