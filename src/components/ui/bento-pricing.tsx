@@ -179,6 +179,7 @@ export function BentoPricing() {
                 { name: "Jim Beam", type: "виски", shot: "500 ₽", bottle: "5 500 ₽" },
                 { name: "Jameson", type: "виски", shot: "550 ₽", bottle: "8 000 ₽" },
                 { name: "Ballantine's", type: "виски", shot: "500 ₽", bottle: "6 300 ₽" },
+                { name: "Jägermeister", type: "ликёр", shot: "580 ₽", bottle: "6 000 ₽" },
                 { name: "Арарат 5★", type: "коньяк", shot: "250 ₽", bottle: "3 000 ₽" },
                 { name: "Арарат 3★", type: "коньяк", shot: "250 ₽", bottle: "3 000 ₽" },
               ].map((item, i) => (
