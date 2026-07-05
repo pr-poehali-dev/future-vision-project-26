@@ -342,7 +342,7 @@ export function DesktopLayout() {
       {/* Footer */}
       <div className="fixed bottom-0 left-0 right-0 z-20 py-2 text-center">
         <p className="font-open-sans-custom font-normal text-xs" style={{ color: "rgba(255,255,255,0.18)" }}>
-          © 2026 Lounge Bar G80 · Разработано Буров Вадим
+          © 2026 Lounge Bar G80
         </p>
       </div>
     </main>

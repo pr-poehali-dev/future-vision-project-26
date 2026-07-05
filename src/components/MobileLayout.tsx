@@ -229,7 +229,7 @@ export function MobileLayout() {
         {/* Footer */}
         <div className="py-4 text-center border-t" style={{ borderColor: "rgba(255,255,255,0.05)" }}>
           <p className="font-open-sans-custom font-normal text-xs" style={{ color: "rgba(255,255,255,0.2)" }}>
-            © 2026 Lounge Bar G80 · Разработано Буров Вадим
+            © 2026 Lounge Bar G80
           </p>
         </div>
 
