@@ -139,7 +139,7 @@ export function BentoPricing() {
             titleBadge="ШОТЫ"
             className="lg:col-span-4"
             items={[
-              { name: "Б-52", desc: "калуа, бейлис, куантро", price: "450 ₽" },
+              { name: "Б-52", desc: "калуа, бейлис, трипл-сек", price: "450 ₽" },
               { name: "Ягербомб", desc: "ягермайстер + энергетик", price: "450 ₽" },
               { name: "Самбука", desc: "классика с зёрнами кофе", price: "450 ₽" },
               { name: "Текила", desc: "соль, лайм", price: "450 ₽" },
