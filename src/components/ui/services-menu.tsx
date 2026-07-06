@@ -35,7 +35,7 @@ const services: ServiceItem[] = [
   {
     icon: "🎮",
     name: "Игровая приставка",
-    desc: "PlayStation / Xbox, любые игры",
+    desc: "PlayStation, любые игры",
     price: "500 ₽",
     unit: "/ час",
   },

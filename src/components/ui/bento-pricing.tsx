@@ -180,8 +180,8 @@ export function BentoPricing() {
                 { name: "Jameson", type: "виски", shot: "550 ₽", bottle: "8 000 ₽" },
                 { name: "Ballantine's", type: "виски", shot: "500 ₽", bottle: "6 300 ₽" },
                 { name: "Jägermeister", type: "ликёр", shot: "580 ₽", bottle: "5 800 ₽" },
-                { name: "Арарат 5★", type: "коньяк", shot: "250 ₽", bottle: "3 000 ₽" },
-                { name: "Арарат 3★", type: "коньяк", shot: "250 ₽", bottle: "3 000 ₽" },
+                { name: "Арарат 5★", type: "коньяк", shot: "300 ₽", bottle: "3 000 ₽" },
+                { name: "Арарат 3★", type: "коньяк", shot: "300 ₽", bottle: "3 000 ₽" },
               ].map((item, i) => (
                 <li key={i} className="flex items-center gap-2">
                   <span className="text-white flex-shrink-0">🥃</span>
