@@ -218,7 +218,7 @@ export function BentoPricing() {
                 <p className="text-white text-xs font-semibold font-open-sans-custom mb-2">🍺 Пиво</p>
                 <ul className="text-gray-300 grid gap-2 text-sm font-open-sans-custom">
                   {[
-                    { name: "Stella Artois", price: "350 ₽" },
+                    { name: "Hoegaarden", price: "350 ₽" },
                     { name: "Corona", price: "400 ₽" },
                     { name: "Green Beat", price: "300 ₽" },
                     { name: "Bud", price: "340 ₽" },
