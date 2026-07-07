@@ -31,15 +31,21 @@ const matches: Match[] = [
   { date: "5 июля", day: "Пн", time: "00:00", team1: "🇵🇾 Парагвай", team2: "🇫🇷 Франция", stage: "1/8", result: "0:1" },
   { date: "5 июля", day: "Пн", time: "23:00", team1: "🇧🇷 Бразилия", team2: "🇳🇴 Норвегия", stage: "1/8", result: "1:2" },
   { date: "6 июля", day: "Вт", time: "03:00", team1: "🇲🇽 Мексика", team2: "🏴󠁧󠁢󠁥󠁮󠁧󠁿 Англия", stage: "1/8", result: "2:3" },
-  { date: "6 июля", day: "Вт", time: "22:00", team1: "🇵🇹 Португалия", team2: "🇪🇸 Испания", stage: "1/8" },
-  { date: "7 июля", day: "Ср", time: "03:00", team1: "🇧🇪 Бельгия", team2: "🇺🇸 США", stage: "1/8" },
-  { date: "7 июля", day: "Ср", time: "19:00", team1: "🇦🇷 Аргентина", team2: "🇪🇬 Египет", stage: "1/8" },
-  { date: "7 июля", day: "Ср", time: "23:00", team1: "🇨🇭 Швейцария", team2: "🇨🇴 Колумбия", stage: "1/8" },
+  { date: "6 июля", day: "Пн", time: "22:00", team1: "🇵🇹 Португалия", team2: "🇪🇸 Испания", stage: "1/8", result: "0:1" },
+  { date: "7 июля", day: "Вт", time: "03:00", team1: "🇧🇪 Бельгия", team2: "🇺🇸 США", stage: "1/8", result: "4:1" },
+  { date: "7 июля", day: "Вт", time: "19:00", team1: "🇦🇷 Аргентина", team2: "🇪🇬 Египет", stage: "1/8", result: "?" },
+  { date: "7 июля", day: "Вт", time: "23:00", team1: "🇨🇭 Швейцария", team2: "🇨🇴 Колумбия", stage: "1/8", result: "?" },
+  // 1/4 финала
+  { date: "9 июля", day: "Чт", time: "23:00", team1: "🇫🇷 Франция", team2: "🇲🇦 Марокко", stage: "1/4" },
+  { date: "10 июля", day: "Пт", time: "22:00", team1: "🇪🇸 Испания", team2: "🇧🇪 Бельгия", stage: "1/4" },
+  { date: "12 июля", day: "Вс", time: "00:00", team1: "🇳🇴 Норвегия", team2: "🏴󠁧󠁢󠁥󠁮󠁧󠁿 Англия", stage: "1/4" },
+  { date: "12 июля", day: "Вс", time: "04:00", team1: "Победитель (Арг/Ег)", team2: "Победитель (Швейц/Кол)", stage: "1/4" },
 ]
 
 const stageColors: Record<string, string> = {
   "1/16": "bg-indigo-500/20 text-indigo-300",
   "1/8":  "bg-purple-500/20 text-purple-300",
+  "1/4":  "bg-pink-500/20 text-pink-300",
 }
 
 export function WorldCupBanner() {
