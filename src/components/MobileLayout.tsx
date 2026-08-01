@@ -1,7 +1,6 @@
 import { LiquidMetalBackground } from "@/components/LiquidMetalBackground"
 import { FloatingNavbar } from "@/components/FloatingNavbar"
 import { VisitorCounter } from "@/components/VisitorCounter"
-import { WorldCupBanner } from "@/components/WorldCupBanner"
 import { ShinyButton } from "@/components/ui/shiny-button"
 import { Feature } from "@/components/ui/feature-with-advantages"
 import { BentoPricing } from "@/components/ui/bento-pricing"
@@ -112,32 +111,6 @@ export function MobileLayout() {
             <div className="mt-6 flex justify-center">
               <VisitorCounter />
             </div>
-          </div>
-        </section>
-
-        {/* ── Анонсы ───────────────────────────────────── */}
-        <section className="relative px-5 pt-10 pb-6">
-          <div className="mx-auto max-w-lg w-full flex flex-col gap-3">
-            <a
-              href="https://donetsk.qtickets.events/241451-project-x-vecherinka-s-basseynom-glavnyy-gost-goody"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="glass-card group w-full flex items-center gap-4 px-5 py-4"
-            >
-              <span className="text-2xl shrink-0">🏊</span>
-              <div className="flex-1 min-w-0">
-                <p className="text-white font-open-sans-custom font-semibold text-sm leading-tight">Тусовка на баре</p>
-                <p className="font-open-sans-custom font-normal text-xs mt-0.5" style={{ color: "rgba(216,180,254,0.7)" }}>Купить билет — нажми сюда</p>
-              </div>
-              <span className="shrink-0 text-white/30 group-hover:text-white/70 transition-colors">→</span>
-            </a>
-          </div>
-        </section>
-
-        {/* ── ЧМ 2026 ──────────────────────────────────── */}
-        <section id="worldcup" className="relative px-5 py-6">
-          <div className="mx-auto max-w-lg w-full">
-            <WorldCupBanner />
           </div>
         </section>
 

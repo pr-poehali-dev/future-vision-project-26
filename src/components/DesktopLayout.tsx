@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom"
 import { LiquidMetalBackground } from "@/components/LiquidMetalBackground"
 import { FloatingNavbar } from "@/components/FloatingNavbar"
 import { VisitorCounter } from "@/components/VisitorCounter"
-import { WorldCupBanner } from "@/components/WorldCupBanner"
 import { ShinyButton } from "@/components/ui/shiny-button"
 import { Feature } from "@/components/ui/feature-with-advantages"
 import { BentoPricing } from "@/components/ui/bento-pricing"
@@ -51,10 +50,28 @@ export function DesktopLayout() {
       const containerWidth = scrollContainer.offsetWidth
       const currentSection = Math.round(currentScroll / containerWidth)
 
-      if (currentSection === 3 && pricingSectionRef.current) {
+      if (currentSection === 2 && pricingSectionRef.current) {
         const pricingSection = pricingSectionRef.current
         const isAtTop = pricingSection.scrollTop === 0
         const isAtBottom = pricingSection.scrollTop + pricingSection.clientHeight >= pricingSection.scrollHeight - 1
+        if (delta > 0 && !isAtBottom) return
+        if (delta < 0 && !isAtTop) return
+        if (delta < 0 && isAtTop) {
+          e.preventDefault()
+          scrollContainer.scrollTo({ left: 1 * containerWidth, behavior: "smooth" })
+          return
+        }
+        if (delta > 0 && isAtBottom) {
+          e.preventDefault()
+          scrollContainer.scrollTo({ left: 3 * containerWidth, behavior: "smooth" })
+          return
+        }
+      }
+
+      if (currentSection === 3 && servicesSectionRef.current) {
+        const servicesSection = servicesSectionRef.current
+        const isAtTop = servicesSection.scrollTop === 0
+        const isAtBottom = servicesSection.scrollTop + servicesSection.clientHeight >= servicesSection.scrollHeight - 1
         if (delta > 0 && !isAtBottom) return
         if (delta < 0 && !isAtTop) return
         if (delta < 0 && isAtTop) {
@@ -69,10 +86,10 @@ export function DesktopLayout() {
         }
       }
 
-      if (currentSection === 4 && servicesSectionRef.current) {
-        const servicesSection = servicesSectionRef.current
-        const isAtTop = servicesSection.scrollTop === 0
-        const isAtBottom = servicesSection.scrollTop + servicesSection.clientHeight >= servicesSection.scrollHeight - 1
+      if (currentSection === 4 && aboutSectionRef.current) {
+        const aboutSection = aboutSectionRef.current
+        const isAtTop = aboutSection.scrollTop === 0
+        const isAtBottom = aboutSection.scrollTop + aboutSection.clientHeight >= aboutSection.scrollHeight - 1
         if (delta > 0 && !isAtBottom) return
         if (delta < 0 && !isAtTop) return
         if (delta < 0 && isAtTop) {
@@ -87,25 +104,7 @@ export function DesktopLayout() {
         }
       }
 
-      if (currentSection === 5 && aboutSectionRef.current) {
-        const aboutSection = aboutSectionRef.current
-        const isAtTop = aboutSection.scrollTop === 0
-        const isAtBottom = aboutSection.scrollTop + aboutSection.clientHeight >= aboutSection.scrollHeight - 1
-        if (delta > 0 && !isAtBottom) return
-        if (delta < 0 && !isAtTop) return
-        if (delta < 0 && isAtTop) {
-          e.preventDefault()
-          scrollContainer.scrollTo({ left: 4 * containerWidth, behavior: "smooth" })
-          return
-        }
-        if (delta > 0 && isAtBottom) {
-          e.preventDefault()
-          scrollContainer.scrollTo({ left: 6 * containerWidth, behavior: "smooth" })
-          return
-        }
-      }
-
-      if (currentSection === 6 && contactSectionRef.current) {
+      if (currentSection === 5 && contactSectionRef.current) {
         const contactSection = contactSectionRef.current
         const isAtTop = contactSection.scrollTop === 0
         const isAtBottom = contactSection.scrollTop + contactSection.clientHeight >= contactSection.scrollHeight - 1
@@ -113,7 +112,7 @@ export function DesktopLayout() {
         if (delta < 0 && !isAtTop) return
         if (delta < 0 && isAtTop) {
           e.preventDefault()
-          scrollContainer.scrollTo({ left: 5 * containerWidth, behavior: "smooth" })
+          scrollContainer.scrollTo({ left: 4 * containerWidth, behavior: "smooth" })
           return
         }
         if (delta > 0 && isAtBottom) {
@@ -125,7 +124,7 @@ export function DesktopLayout() {
       e.preventDefault()
       if (Math.abs(delta) > 10) {
         let targetSection = currentSection
-        if (delta > 0) targetSection = Math.min(currentSection + 1, 6)
+        if (delta > 0) targetSection = Math.min(currentSection + 1, 5)
         else targetSection = Math.max(currentSection - 1, 0)
         scrollContainer.scrollTo({ left: targetSection * containerWidth, behavior: "smooth" })
       }
@@ -160,9 +159,9 @@ export function DesktopLayout() {
           </div>
           <div className="absolute bottom-0 left-0 right-0 z-10 neon-divider" />
 
-          <div className="relative z-10 w-full max-w-7xl mx-auto grid grid-cols-2 gap-16 items-center">
+          <div className="relative z-10 w-full max-w-3xl mx-auto">
 
-            {/* Left — заголовок и кнопки */}
+            {/* Заголовок и кнопки */}
             <div className="flex flex-col items-start">
               <div className="mb-5">
                 <span
@@ -213,44 +212,14 @@ export function DesktopLayout() {
               <div className="mt-4">
                 <VisitorCounter />
               </div>
-            </div>
-
-            {/* Right — плашка бассейн */}
-            <div className="flex flex-col gap-4">
-              <a
-                href="https://donetsk.qtickets.events/241451-project-x-vecherinka-s-basseynom-glavnyy-gost-goody"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="glass-card group flex items-center gap-4 px-6 py-5"
-              >
-                <span className="text-3xl shrink-0">🏊</span>
-                <div className="flex-1 min-w-0">
-                  <p className="text-white font-open-sans-custom font-semibold text-base leading-tight">Тусовка на баре</p>
-                  <p className="font-open-sans-custom font-normal text-xs mt-1" style={{ color: "rgba(216,180,254,0.65)" }}>Купить билет — нажми сюда</p>
-                </div>
-                <span className="shrink-0 text-white/25 group-hover:text-white/70 transition-colors text-lg">→</span>
-              </a>
 
               {/* Подсказка навигации */}
-              <div className="text-center mt-4">
+              <div className="mt-6">
                 <p className="font-open-sans-custom font-normal text-xs" style={{ color: "rgba(255,255,255,0.2)" }}>
                   Прокрути вниз для навигации →
                 </p>
               </div>
             </div>
-          </div>
-        </section>
-
-        {/* ── ЧМ 2026 ──────────────────────────────────── */}
-        <section id="worldcup" className="flex min-w-full snap-start items-center justify-center px-10 py-20 relative">
-          <div className="absolute inset-0 z-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 50% 50%, rgba(16, 60, 20, 0.15) 0%, transparent 70%)" }} />
-          <div className="relative z-10 w-full max-w-3xl mx-auto">
-            <SectionHeading
-              label="Спорт в баре"
-              title="Чемпионат мира 2026"
-              subtitle="Смотрим все матчи в G80 Lounge Bar"
-            />
-            <WorldCupBanner />
           </div>
         </section>
 
