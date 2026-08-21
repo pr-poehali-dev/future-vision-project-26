@@ -6,7 +6,7 @@ function Feature() {
     {
       icon: "GlassWater",
       title: "Авторские коктейли",
-      description: "Уникальные рецепты от наших барменов — Lavande Spritz, Cyan Lagoon, G80 Heart и другие.",
+      description: "Уникальные рецепты от наших барменов — Lavande Spritz, Cyan Lagoon, Milk Punch и другие.",
     },
     {
       icon: "Wine",
@@ -14,14 +14,9 @@ function Feature() {
       description: "Mojito, Aperol Spritz, Margarita, Cosmopolitan, Long Island — всё что вы любите.",
     },
     {
-      icon: "Flame",
-      title: "Авторские шоты",
-      description: "Эксклюзивные шоты от наших барменов — яркие вкусы, которых нет нигде больше.",
-    },
-    {
       icon: "Zap",
       title: "Шоты",
-      description: "Б-52, Самбука, Текила, Ягербомб, Клубничный взрыв — быстро и ярко.",
+      description: "Б-52, Самбука, Текила, Ягербомб — быстро и ярко.",
     },
     {
       icon: "Wind",

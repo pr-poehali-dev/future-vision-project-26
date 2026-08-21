@@ -90,8 +90,6 @@ export function BentoPricing() {
                 { name: "Lavande Spritz", desc: "лаванда, просекко, лимон", price: "650 ₽" },
                 { name: "Cyan Lagoon", desc: "голубой кюрасао, лайм, тоник", price: "600 ₽" },
                 { name: "Milk Punch", desc: "молоко, ром, ваниль, специи", price: "700 ₽" },
-                { name: "G80 Heart", desc: "малина, роза, джин, личи", price: "750 ₽" },
-                { name: "Donbass", desc: "авторский коктейль бара", price: "600 ₽" },
               ].map((item, i) => (
                 <li key={i} className="flex items-center gap-2">
                   <span className="text-white flex-shrink-0">🍸</span>
@@ -119,22 +117,7 @@ export function BentoPricing() {
             ]}
           />
 
-          {/* Авторские шоты */}
-          <MenuCard
-            titleBadge="АВТОРСКИЕ ШОТЫ"
-            className="lg:col-span-4"
-            featured
-            items={[
-              { name: "Бархат", desc: "бейлис, взбитые сливки", price: "450 ₽" },
-              { name: "Свежак", desc: "лаймовый ликёр, мята, ром", price: "450 ₽" },
-              { name: "Кокос", desc: "сливочный ликёр, кокос", price: "450 ₽" },
-              { name: "Малинка", desc: "гренадин, малина, водка", price: "450 ₽" },
-              { name: "Смог", desc: "бурбон, дым, специи", price: "450 ₽" },
-              { name: "Провокатор", desc: "текила, перец, лайм", price: "450 ₽" },
-            ]}
-          />
-
-          {/* Шоты классические */}
+          {/* Шоты */}
           <MenuCard
             titleBadge="ШОТЫ"
             className="lg:col-span-4"
@@ -143,7 +126,6 @@ export function BentoPricing() {
               { name: "Ягербомб", desc: "ягермайстер + энергетик", price: "450 ₽" },
               { name: "Самбука", desc: "классика с зёрнами кофе", price: "450 ₽" },
               { name: "Текила", desc: "соль, лайм", price: "450 ₽" },
-              { name: "Клубничный взрыв", desc: "малиновый ликёр, водка", price: "450 ₽" },
             ]}
           />
 
