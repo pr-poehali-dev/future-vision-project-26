@@ -2,7 +2,6 @@ import { useEffect, useRef } from "react"
 import { useNavigate } from "react-router-dom"
 import { LiquidMetalBackground } from "@/components/LiquidMetalBackground"
 import { FloatingNavbar } from "@/components/FloatingNavbar"
-import { VisitorCounter } from "@/components/VisitorCounter"
 import { ShinyButton } from "@/components/ui/shiny-button"
 import { Feature } from "@/components/ui/feature-with-advantages"
 import { BentoPricing } from "@/components/ui/bento-pricing"
@@ -209,10 +208,6 @@ export function DesktopLayout() {
                   <span>💛</span><span>Чаевые</span>
                 </button>
               </div>
-              <div className="mt-4">
-                <VisitorCounter />
-              </div>
-
               <a
                 href="https://qtickets.ru/event/251073"
                 target="_blank"

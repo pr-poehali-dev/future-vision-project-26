@@ -1,6 +1,5 @@
 import { LiquidMetalBackground } from "@/components/LiquidMetalBackground"
 import { FloatingNavbar } from "@/components/FloatingNavbar"
-import { VisitorCounter } from "@/components/VisitorCounter"
 import { ShinyButton } from "@/components/ui/shiny-button"
 import { Feature } from "@/components/ui/feature-with-advantages"
 import { BentoPricing } from "@/components/ui/bento-pricing"
@@ -107,9 +106,6 @@ export function MobileLayout() {
                 <span>💛</span>
                 <span>Оставить чаевые</span>
               </button>
-            </div>
-            <div className="mt-6 flex justify-center">
-              <VisitorCounter />
             </div>
           </div>
         </section>
