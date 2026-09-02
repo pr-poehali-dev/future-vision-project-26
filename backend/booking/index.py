@@ -1,8 +1,16 @@
 import json
 import os
+import socket
+import ssl
+import http.client
 import urllib.request
 import urllib.parse
 import psycopg2
+
+# Часть диапазонов Telegram недоступна из сети функций (таймаут на уровне
+# маршрутизации), но конкретный этот IP api.telegram.org доступен.
+# Пытаемся сначала через обычный DNS, затем — pin на рабочий IP.
+TELEGRAM_FALLBACK_IPS = ['149.154.167.220']
 
 
 def get_conn():
@@ -21,26 +29,61 @@ def cors(body, status=200):
     }
 
 
+def _telegram_request_via_ip(ip: str, bot_token: str, path: str, data: bytes, timeout: int) -> dict:
+    """Отправляет HTTPS-запрос к api.telegram.org, подключаясь напрямую по IP
+    (обходит проблемные маршруты/DNS), но с проверкой TLS-сертификата по
+    настоящему имени хоста."""
+    ctx = ssl.create_default_context()
+    raw_sock = socket.create_connection((ip, 443), timeout=timeout)
+    ssock = ctx.wrap_socket(raw_sock, server_hostname='api.telegram.org')
+    conn = http.client.HTTPConnection(ip, 443, timeout=timeout)
+    conn.sock = ssock
+    try:
+        conn.putrequest('POST', f'/bot{bot_token}/{path}', skip_host=True)
+        conn.putheader('Host', 'api.telegram.org')
+        conn.putheader('Content-Type', 'application/x-www-form-urlencoded')
+        conn.putheader('Content-Length', str(len(data)))
+        conn.endheaders(data)
+        resp = conn.getresponse()
+        body = resp.read().decode()
+        return json.loads(body)
+    finally:
+        conn.close()
+
+
 def send_telegram(bot_token: str, chat_id: str, text: str) -> bool:
-    """Отправка сообщения в Telegram через urllib (best-effort, короткий таймаут)"""
-    url = f'https://api.telegram.org/bot{bot_token}/sendMessage'
+    """Отправка сообщения в Telegram. Сначала пробуем обычное DNS-соединение
+    (быстрый таймаут), если оно недоступно — идём через резервный IP
+    (с несколькими попытками, т.к. канал до него нестабильный)."""
     data = urllib.parse.urlencode({
         'chat_id': chat_id,
         'text': text,
         'parse_mode': 'HTML',
     }).encode('utf-8')
 
+    url = f'https://api.telegram.org/bot{bot_token}/sendMessage'
     req = urllib.request.Request(url, data=data, method='POST')
     req.add_header('Content-Type', 'application/x-www-form-urlencoded')
-
     try:
-        with urllib.request.urlopen(req, timeout=4) as resp:
+        with urllib.request.urlopen(req, timeout=3) as resp:
             result = json.loads(resp.read().decode())
-            print(f"Telegram [{chat_id}] ok: {result.get('ok')}")
+            print(f"Telegram [{chat_id}] ok (direct): {result.get('ok')}")
             return result.get('ok', False)
     except Exception as e:
-        print(f"Telegram [{chat_id}] error: {e}")
-        return False
+        print(f"Telegram [{chat_id}] direct error: {e}")
+
+    for ip in TELEGRAM_FALLBACK_IPS:
+        for attempt in range(2):
+            try:
+                result = _telegram_request_via_ip(ip, bot_token, 'sendMessage', data, timeout=5)
+                print(f"Telegram [{chat_id}] ok (via {ip}, attempt {attempt + 1}): {result.get('ok')}")
+                if result.get('ok'):
+                    return True
+                break
+            except Exception as e:
+                print(f"Telegram [{chat_id}] fallback {ip} attempt {attempt + 1} error: {e}")
+
+    return False
 
 
 def handler(event: dict, context) -> dict:
