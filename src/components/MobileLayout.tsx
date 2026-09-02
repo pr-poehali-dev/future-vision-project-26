@@ -110,25 +110,6 @@ export function MobileLayout() {
           </div>
         </section>
 
-        {/* ── Анонсы ───────────────────────────────────── */}
-        <section className="relative px-5 pt-10 pb-6">
-          <div className="mx-auto max-w-lg w-full flex flex-col gap-3">
-            <a
-              href="https://qtickets.ru/event/251073"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="glass-card group w-full flex items-center gap-4 px-5 py-4"
-            >
-              <span className="text-2xl shrink-0">🍂</span>
-              <div className="flex-1 min-w-0">
-                <p className="text-white font-open-sans-custom font-semibold text-sm leading-tight">Тусовка по окончанию лета</p>
-                <p className="font-open-sans-custom font-normal text-xs mt-0.5" style={{ color: "rgba(216,180,254,0.7)" }}>Купить билет — нажми сюда</p>
-              </div>
-              <span className="shrink-0 text-white/30 group-hover:text-white/70 transition-colors">→</span>
-            </a>
-          </div>
-        </section>
-
         <div className="section-divider mx-5" />
 
         {/* ── Меню ─────────────────────────────────────── */}
