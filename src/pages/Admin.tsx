@@ -87,6 +87,16 @@ export default function Admin() {
     })
   }
 
+  const deleteBooking = async (id: number) => {
+    if (!confirm("Удалить заявку?")) return
+    setBookings(bs => bs.filter(b => b.id !== id))
+    await fetch(BOOKING_URL, {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json", "X-Admin-Password": savedPassword },
+      body: JSON.stringify({ id }),
+    })
+  }
+
   const fetchItems = async (pwd: string) => {
     setLoading(true)
     const res = await fetch(MENU_URL, { headers: { "X-Admin-Password": pwd } })
@@ -256,16 +266,24 @@ export default function Admin() {
                         {b.comment && <p className="text-gray-500 text-xs mt-1">{b.comment}</p>}
                         <p className="text-gray-600 text-xs mt-1">{new Date(b.created_at).toLocaleString("ru-RU")}</p>
                       </div>
-                      <select
-                        value={b.status}
-                        onChange={e => updateBookingStatus(b.id, e.target.value)}
-                        className="flex-shrink-0 bg-white/10 border border-white/20 text-white rounded-md px-2 py-1.5 text-xs"
-                      >
-                        <option value="new" className="bg-gray-900">Новая</option>
-                        <option value="confirmed" className="bg-gray-900">Подтверждена</option>
-                        <option value="done" className="bg-gray-900">Выполнена</option>
-                        <option value="cancelled" className="bg-gray-900">Отменена</option>
-                      </select>
+                      <div className="flex flex-col gap-1.5 flex-shrink-0">
+                        <select
+                          value={b.status}
+                          onChange={e => updateBookingStatus(b.id, e.target.value)}
+                          className="bg-white/10 border border-white/20 text-white rounded-md px-2 py-1.5 text-xs"
+                        >
+                          <option value="new" className="bg-gray-900">Новая</option>
+                          <option value="confirmed" className="bg-gray-900">Подтверждена</option>
+                          <option value="done" className="bg-gray-900">Выполнена</option>
+                          <option value="cancelled" className="bg-gray-900">Отменена</option>
+                        </select>
+                        <button
+                          onClick={() => deleteBooking(b.id)}
+                          className="p-1.5 rounded-md bg-red-500/20 hover:bg-red-500/40 transition-colors text-red-400 flex items-center justify-center"
+                        >
+                          <Icon name="Trash2" size={14} />
+                        </button>
+                      </div>
                     </div>
                   ))}
                 </div>

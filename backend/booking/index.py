@@ -22,7 +22,7 @@ def cors(body, status=200):
         'statusCode': status,
         'headers': {
             'Access-Control-Allow-Origin': '*',
-            'Access-Control-Allow-Methods': 'GET, POST, PUT, OPTIONS',
+            'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
             'Access-Control-Allow-Headers': 'Content-Type, X-Admin-Password',
         },
         'body': json.dumps(body)
@@ -71,7 +71,7 @@ def handler(event: dict, context) -> dict:
             'statusCode': 200,
             'headers': {
                 'Access-Control-Allow-Origin': '*',
-                'Access-Control-Allow-Methods': 'GET, POST, PUT, OPTIONS',
+                'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
                 'Access-Control-Allow-Headers': 'Content-Type, X-Admin-Password',
                 'Access-Control-Max-Age': '86400',
             },
@@ -157,6 +157,16 @@ def handler(event: dict, context) -> dict:
         conn = get_conn()
         cur = conn.cursor()
         cur.execute(f'UPDATE {schema}.bookings SET status=%s WHERE id=%s', (status, booking_id))
+        conn.commit()
+        conn.close()
+        return cors({'success': True})
+
+    if method == 'DELETE':
+        body = json.loads(event.get('body', '{}') or '{}')
+        booking_id = body.get('id')
+        conn = get_conn()
+        cur = conn.cursor()
+        cur.execute(f'DELETE FROM {schema}.bookings WHERE id=%s', (booking_id,))
         conn.commit()
         conn.close()
         return cors({'success': True})
