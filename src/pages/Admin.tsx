@@ -6,6 +6,7 @@ import Icon from "@/components/ui/icon"
 import { useVisitorStats } from "@/hooks/use-visitors"
 
 const MENU_URL = "https://functions.poehali.dev/7d21c12e-b792-4122-b83e-b8fe70fe4794"
+const BOOKING_URL = "https://functions.poehali.dev/a419d7df-39e9-4f81-801e-5ced1af35d89"
 
 const CATEGORIES: Record<string, string> = {
   cocktails_author: "Авторские коктейли",
@@ -32,6 +33,17 @@ type MenuItem = {
   sort_order: number
 }
 
+type Booking = {
+  id: number
+  name: string
+  phone: string
+  date: string | null
+  guests: string | null
+  comment: string | null
+  status: string
+  created_at: string
+}
+
 type EditForm = Omit<MenuItem, "id"> & { id?: number }
 
 const emptyForm = (): EditForm => ({
@@ -55,6 +67,25 @@ export default function Admin() {
   const [saving, setSaving] = useState(false)
   const [savedPassword, setSavedPassword] = useState("")
   const { stats, loading: statsLoading, reload: reloadStats } = useVisitorStats()
+  const [bookings, setBookings] = useState<Booking[]>([])
+  const [bookingsLoading, setBookingsLoading] = useState(false)
+
+  const fetchBookings = async (pwd: string) => {
+    setBookingsLoading(true)
+    const res = await fetch(BOOKING_URL, { headers: { "X-Admin-Password": pwd } })
+    const data = await res.json()
+    setBookings(data.bookings || [])
+    setBookingsLoading(false)
+  }
+
+  const updateBookingStatus = async (id: number, status: string) => {
+    setBookings(bs => bs.map(b => b.id === id ? { ...b, status } : b))
+    await fetch(BOOKING_URL, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json", "X-Admin-Password": savedPassword },
+      body: JSON.stringify({ id, status }),
+    })
+  }
 
   const fetchItems = async (pwd: string) => {
     setLoading(true)
@@ -77,6 +108,7 @@ export default function Admin() {
     setSavedPassword(password)
     setAuthed(true)
     fetchItems(password)
+    fetchBookings(password)
   }
 
   const save = async () => {
@@ -160,6 +192,18 @@ export default function Admin() {
         {/* Sidebar */}
         <div className="w-56 border-r border-white/10 bg-black/20 overflow-y-auto flex-shrink-0">
           <button
+            onClick={() => setActiveCategory("__bookings__")}
+            className={`w-full text-left px-4 py-3 text-sm border-b border-white/10 transition-colors flex items-center justify-between gap-2
+              ${activeCategory === "__bookings__" ? "bg-purple-500/20 text-purple-300" : "text-gray-400 hover:bg-white/5 hover:text-white"}`}
+          >
+            <span className="flex items-center gap-2"><span>📅</span><span>Бронирования</span></span>
+            {bookings.filter(b => b.status === "new").length > 0 && (
+              <span className="text-xs bg-purple-500/30 text-purple-200 rounded-full px-2 py-0.5 flex-shrink-0">
+                {bookings.filter(b => b.status === "new").length}
+              </span>
+            )}
+          </button>
+          <button
             onClick={() => setActiveCategory("__stats__")}
             className={`w-full text-left px-4 py-3 text-sm border-b border-white/10 transition-colors flex items-center gap-2
               ${activeCategory === "__stats__" ? "bg-purple-500/20 text-purple-300" : "text-gray-400 hover:bg-white/5 hover:text-white"}`}
@@ -185,7 +229,49 @@ export default function Admin() {
         {/* Content */}
         <div className="flex-1 overflow-y-auto p-4">
 
-          {activeCategory === "__stats__" ? (
+          {activeCategory === "__bookings__" ? (
+            <div>
+              <div className="flex items-center justify-between mb-4">
+                <h2 className="text-white font-semibold text-lg">Заявки на бронь</h2>
+                <button onClick={() => fetchBookings(savedPassword)} className="text-xs text-gray-400 hover:text-white px-3 py-1 rounded bg-white/5 border border-white/10">
+                  Обновить
+                </button>
+              </div>
+              {bookingsLoading ? (
+                <p className="text-gray-400">Загрузка...</p>
+              ) : bookings.length === 0 ? (
+                <p className="text-gray-500 text-sm">Заявок пока нет</p>
+              ) : (
+                <div className="grid gap-2">
+                  {bookings.map(b => (
+                    <div key={b.id} className={`bg-white/5 border rounded-xl px-4 py-3 flex items-start gap-4 ${b.status === "new" ? "border-purple-400/40" : "border-white/10"}`}>
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center gap-2 flex-wrap">
+                          <p className="text-white font-medium">{b.name}</p>
+                          <a href={`tel:${b.phone}`} className="text-purple-300 text-sm hover:underline">{b.phone}</a>
+                        </div>
+                        <p className="text-gray-400 text-xs mt-1">
+                          {[b.date, b.guests ? `${b.guests} гостей` : null].filter(Boolean).join(" · ")}
+                        </p>
+                        {b.comment && <p className="text-gray-500 text-xs mt-1">{b.comment}</p>}
+                        <p className="text-gray-600 text-xs mt-1">{new Date(b.created_at).toLocaleString("ru-RU")}</p>
+                      </div>
+                      <select
+                        value={b.status}
+                        onChange={e => updateBookingStatus(b.id, e.target.value)}
+                        className="flex-shrink-0 bg-white/10 border border-white/20 text-white rounded-md px-2 py-1.5 text-xs"
+                      >
+                        <option value="new" className="bg-gray-900">Новая</option>
+                        <option value="confirmed" className="bg-gray-900">Подтверждена</option>
+                        <option value="done" className="bg-gray-900">Выполнена</option>
+                        <option value="cancelled" className="bg-gray-900">Отменена</option>
+                      </select>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          ) : activeCategory === "__stats__" ? (
             <div>
               <div className="flex items-center justify-between mb-4">
                 <h2 className="text-white font-semibold text-lg">Статистика посетителей</h2>
