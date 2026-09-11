@@ -204,9 +204,6 @@ export function DesktopLayout() {
                 >
                   <span>✈️</span><span>Telegram</span>
                 </a>
-                <button onClick={() => navigate("/tips")} className="btn-ghost text-sm px-5 py-3">
-                  <span>💛</span><span>Чаевые</span>
-                </button>
               </div>
 
               {/* Подсказка навигации */}

@@ -99,13 +99,6 @@ export function MobileLayout() {
                 <span>✈️</span>
                 <span>Написать в Telegram</span>
               </a>
-              <button
-                onClick={() => navigate("/tips")}
-                className="btn-ghost w-full justify-center text-base"
-              >
-                <span>💛</span>
-                <span>Оставить чаевые</span>
-              </button>
             </div>
           </div>
         </section>
