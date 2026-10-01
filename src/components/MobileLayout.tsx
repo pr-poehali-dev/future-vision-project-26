@@ -91,7 +91,7 @@ export function MobileLayout() {
                 <span>Позвонить</span>
               </a>
               <a
-                href="https://t.me/vadimbg80"
+                href="https://t.me/G80LoungeBar"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-ghost w-full justify-center text-base"
@@ -179,7 +179,7 @@ export function MobileLayout() {
               contactInfo={[
                 { icon: MapPinIcon, label: "Адрес", value: "Донецк, ул. Постышева, 120" },
                 { icon: PhoneIcon, label: "Телефон", value: "+7 949 430 5174" },
-                { icon: SendIcon, label: "Telegram", value: "@vadimbG80" },
+                { icon: SendIcon, label: "Telegram", value: "@G80LoungeBar" },
                 { icon: MailIcon, label: "Режим работы", value: "Пн–Чт: 14:00–23:00 · Пт–Пн: 14:00–06:00" },
               ]}
             >
