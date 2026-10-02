@@ -104,7 +104,7 @@ def handler(event: dict, context) -> dict:
         conn.close()
 
         bot_token = os.environ.get('TELEGRAM_BOT_TOKEN', '')
-        chat_ids = [c for c in [os.environ.get('TELEGRAM_CHAT_ID', ''), '-1003708419944'] if c]
+        chat_ids = [c for c in [os.environ.get('TELEGRAM_CHAT_ID', ''), '-1003708419944', '-1003994109554'] if c]
         lines = [
             '🥃 <b>Новая заявка на бронь — G80</b>',
             '',
