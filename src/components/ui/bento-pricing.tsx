@@ -257,6 +257,7 @@ export function BentoPricing() {
                 </ul>
               </div>
             </div>
+            <p className="text-gray-400 text-xs px-3 pb-3 font-open-sans-custom">🍋 Лимон и закуски — цена определяется на месте</p>
           </div>
 
         </div>
