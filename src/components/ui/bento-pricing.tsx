@@ -90,6 +90,7 @@ export function BentoPricing() {
                 { name: "Lavande Spritz", desc: "лаванда, просекко, лимон", price: "750 ₽" },
                 { name: "Cyan Lagoon", desc: "голубой кюрасао, лайм, тоник", price: "700 ₽" },
                 { name: "Milk Punch", desc: "молоко, ром, ваниль, специи", price: "СТОП" },
+                { name: "Зелёная фея", desc: "абсент", price: "700 ₽" },
               ].map((item, i) => (
                 <li key={i} className="flex items-center gap-2">
                   <span className="text-white flex-shrink-0">🍸</span>
