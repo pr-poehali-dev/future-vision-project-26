@@ -16,7 +16,7 @@ function Feature() {
     {
       icon: "Zap",
       title: "Шоты",
-      description: "Б-52, Самбука, Текила, Ягербомб — быстро и ярко.",
+      description: "Б-52, Самбука, Текила, Облака — быстро и ярко.",
     },
     {
       icon: "Wind",
