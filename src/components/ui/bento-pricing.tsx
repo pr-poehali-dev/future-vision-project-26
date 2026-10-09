@@ -87,9 +87,9 @@ export function BentoPricing() {
             </div>
             <ul className="text-gray-300 grid grid-cols-1 sm:grid-cols-2 gap-2.5 p-3 text-sm font-open-sans-custom">
               {[
-                { name: "Lavande Spritz", desc: "лаванда, просекко, лимон", price: "650 ₽" },
-                { name: "Cyan Lagoon", desc: "голубой кюрасао, лайм, тоник", price: "600 ₽" },
-                { name: "Milk Punch", desc: "молоко, ром, ваниль, специи", price: "700 ₽" },
+                { name: "Lavande Spritz", desc: "лаванда, просекко, лимон", price: "750 ₽" },
+                { name: "Cyan Lagoon", desc: "голубой кюрасао, лайм, тоник", price: "700 ₽" },
+                { name: "Milk Punch", desc: "молоко, ром, ваниль, специи", price: "СТОП" },
               ].map((item, i) => (
                 <li key={i} className="flex items-center gap-2">
                   <span className="text-white flex-shrink-0">🍸</span>
@@ -108,12 +108,12 @@ export function BentoPricing() {
             titleBadge="КЛАССИЧЕСКИЕ КОКТЕЙЛИ"
             className="lg:col-span-3"
             items={[
-              { name: "Mojito", desc: "ром, мята, лайм", price: "550 ₽" },
-              { name: "Aperol Spritz", desc: "апероль, просекко", price: "600 ₽" },
-              { name: "Margarita", desc: "текила, лайм, трипл-сек", price: "550 ₽" },
-              { name: "Cosmopolitan", desc: "водка, клюква, лайм", price: "500 ₽" },
-              { name: "Long Island", desc: "5 видов алкоголя, кола", price: "700 ₽" },
-              { name: "Daiquiri", desc: "ром, лайм, сахар", price: "500 ₽" },
+              { name: "Mojito", desc: "ром, мята, лайм", price: "600 ₽" },
+              { name: "Aperol Spritz", desc: "апероль, просекко", price: "800 ₽" },
+              { name: "Margarita", desc: "текила, лайм, трипл-сек", price: "650 ₽" },
+              { name: "Cosmopolitan", desc: "водка, клюква, лайм", price: "СТОП" },
+              { name: "Long Island", desc: "5 видов алкоголя, кола", price: "800 ₽" },
+              { name: "Daiquiri", desc: "ром, лайм, сахар", price: "650 ₽" },
             ]}
           />
 
@@ -122,11 +122,11 @@ export function BentoPricing() {
             titleBadge="ШОТЫ"
             className="lg:col-span-4"
             items={[
-              { name: "Б-52", desc: "калуа, бейлис, трипл-сек", price: "450 ₽" },
-              { name: "Ягербомб", desc: "ягермайстер + энергетик", price: "450 ₽" },
-              { name: "Самбука", desc: "классика с зёрнами кофе", price: "450 ₽" },
-              { name: "Текила", desc: "соль, лайм", price: "450 ₽" },
-              { name: "Облака", desc: "блю кюрасао, бейлис, трипл-сек", price: "500 ₽" },
+              { name: "Б-52", desc: "калуа, бейлис, трипл-сек", price: "650 ₽" },
+              { name: "Сет шотов", desc: "подборка шотов бара", price: "2 499 ₽" },
+              { name: "Самбука", desc: "классика с зёрнами кофе", price: "700 ₽" },
+              { name: "Текила", desc: "соль, лайм", price: "600 ₽" },
+              { name: "Облака", desc: "блю кюрасао, бейлис, трипл-сек", price: "650 ₽" },
             ]}
           />
 
@@ -136,9 +136,9 @@ export function BentoPricing() {
             className="lg:col-span-3"
             icon="🍋"
             items={[
-              { name: "Лимонад Классик", desc: "лимон, мята, сахарный сироп", price: "350 ₽" },
-              { name: "Лимонад Апельсиновый", desc: "апельсин, имбирь, лимон", price: "350 ₽" },
-              { name: "Лимонад на энергетике", desc: "лимон, энергетик, мята, лайм", price: "400 ₽" },
+              { name: "Лимонад Классик", desc: "лимон, мята, сахарный сироп", price: "450 ₽" },
+              { name: "Лимонад Апельсиновый", desc: "апельсин, имбирь, лимон", price: "450 ₽" },
+              { name: "Лимонад на энергетике", desc: "лимон, энергетик, мята, лайм", price: "500 ₽" },
             ]}
           />
 
@@ -158,13 +158,13 @@ export function BentoPricing() {
             </div>
             <ul className="text-gray-300 grid gap-2.5 p-3 text-sm font-open-sans-custom">
               {[
-                { name: "Jack Daniel's", type: "виски", shot: "550 ₽", bottle: "7 500 ₽" },
-                { name: "Jim Beam", type: "виски", shot: "500 ₽", bottle: "5 500 ₽" },
-                { name: "Jameson", type: "виски", shot: "550 ₽", bottle: "8 000 ₽" },
-                { name: "Ballantine's", type: "виски", shot: "500 ₽", bottle: "6 300 ₽" },
-                { name: "Jägermeister", type: "ликёр", shot: "580 ₽", bottle: "5 800 ₽" },
-                { name: "Арарат 5★", type: "коньяк", shot: "300 ₽", bottle: "3 000 ₽" },
-                { name: "Арарат 3★", type: "коньяк", shot: "300 ₽", bottle: "3 000 ₽" },
+                { name: "Jack Daniel's", type: "виски", shot: "1 000 ₽", bottle: "7 500 ₽" },
+                { name: "Jim Beam", type: "виски", shot: "700 ₽", bottle: "7 000 ₽" },
+                { name: "Jameson", type: "виски", shot: "850 ₽", bottle: "8 000 ₽" },
+                { name: "Ballantine's", type: "виски", shot: "700 ₽", bottle: "7 000 ₽" },
+                { name: "Jägermeister", type: "ликёр", shot: "650 ₽", bottle: "6 500 ₽" },
+                { name: "Арарат 5★", type: "коньяк", shot: "550 ₽", bottle: "3 500 ₽" },
+                { name: "Арарат 3★", type: "коньяк", shot: "500 ₽", bottle: "3 000 ₽" },
               ].map((item, i) => (
                 <li key={i} className="flex items-center gap-2">
                   <span className="text-white flex-shrink-0">🥃</span>
@@ -179,7 +179,7 @@ export function BentoPricing() {
                 </li>
               ))}
             </ul>
-            <p className="text-gray-500 text-xs px-3 pb-3 font-open-sans-custom">50 мл / бутылка</p>
+            <p className="text-gray-500 text-xs px-3 pb-3 font-open-sans-custom">100 мл / бутылка. 50 мл не продаём</p>
           </div>
 
           {/* Пиво, вина и напитки */}
@@ -201,10 +201,9 @@ export function BentoPricing() {
                 <p className="text-white text-xs font-semibold font-open-sans-custom mb-2">🍺 Пиво</p>
                 <ul className="text-gray-300 grid gap-2 text-sm font-open-sans-custom">
                   {[
-                    { name: "Hoegaarden", price: "350 ₽" },
-                    { name: "Corona", price: "400 ₽" },
-                    { name: "Green Beat", price: "300 ₽" },
-                    { name: "Bud", price: "340 ₽" },
+                    { name: "Corona", price: "450 ₽" },
+                    { name: "Green Beat", price: "350 ₽" },
+                    { name: "Hoegaarden", price: "400 ₽" },
                   ].map((item, i) => (
                     <li key={i} className="flex items-center justify-between gap-1.5">
                       <span className="flex items-center gap-1.5"><span>🍺</span><span>{item.name}</span></span>
@@ -217,38 +216,42 @@ export function BentoPricing() {
                 <p className="text-white text-xs font-semibold font-open-sans-custom mb-2">🥂 Шампанское</p>
                 <ul className="text-gray-300 grid gap-2 text-sm font-open-sans-custom">
                   {[
-                    { name: "Абрау-Дюрсо брют" },
-                    { name: "Veuve Alban брют" },
+                    { name: "Абрау-Дюрсо" },
                   ].map((item, i) => (
                     <li key={i} className="flex items-center gap-1.5">
                       <span>🥂</span><span>{item.name}</span>
                     </li>
                   ))}
-                  <li className="text-white/50 text-xs">бокал 500 ₽ / бутылка 2 500 ₽</li>
+                  <li className="text-white/50 text-xs">бутылка 2 500 ₽</li>
                 </ul>
               </div>
               <div>
                 <p className="text-white text-xs font-semibold font-open-sans-custom mb-2">🍷 Вино</p>
                 <ul className="text-gray-300 grid gap-2 text-sm font-open-sans-custom">
                   {[
-                    { name: "Genatsvale" },
                     { name: "Алазанская долина" },
                   ].map((item, i) => (
                     <li key={i} className="flex items-center gap-1.5">
                       <span>🍷</span><span>{item.name}</span>
                     </li>
                   ))}
-                  <li className="text-white/50 text-xs">бокал 500 ₽ / бутылка 4 000 ₽</li>
+                  <li className="text-white/50 text-xs">бокал 500 ₽ / бутылка 2 000 ₽</li>
                 </ul>
               </div>
 
               <div>
                 <p className="text-white text-xs font-semibold font-open-sans-custom mb-2">🥤 Напитки</p>
                 <ul className="text-gray-300 grid gap-2 text-sm font-open-sans-custom">
-                  {["Coca-Cola", "Fanta", "Sprite"].map((name, i) => (
+                  {[
+                    { name: "Кола 0,33 л", price: "300 ₽" },
+                    { name: "Пепси 0,33 л", price: "300 ₽" },
+                    { name: "Спрайт 0,33 л", price: "300 ₽" },
+                    { name: "Red Bull 0,25 л", price: "350 ₽" },
+                    { name: "Адреналин 0,449 л", price: "400 ₽" },
+                  ].map((item, i) => (
                     <li key={i} className="flex items-center justify-between gap-1.5">
-                      <span className="flex items-center gap-1.5"><span>🥤</span><span>{name}</span></span>
-                      <span className="text-white/70 text-xs">250 ₽</span>
+                      <span className="flex items-center gap-1.5"><span>🥤</span><span>{item.name}</span></span>
+                      <span className="text-white/70 text-xs">{item.price}</span>
                     </li>
                   ))}
                 </ul>
