@@ -76,6 +76,16 @@ export function MobileLayout() {
 
             {/* CTA buttons */}
             <div className="flex flex-col items-center gap-3 w-full max-w-xs mx-auto">
+              <a
+                href="https://qtickets.ru/event/256437"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-ghost w-full justify-center text-base"
+                style={{ borderColor: "rgba(249,168,212,0.8)", background: "rgba(236,72,153,0.25)", boxShadow: "0 0 18px rgba(236,72,153,0.45)" }}
+              >
+                <span>🎟️</span>
+                <span>Купить билет на Student Party</span>
+              </a>
               <button
                 onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
                 className="btn-ghost w-full justify-center text-base"

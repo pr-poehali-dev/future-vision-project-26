@@ -187,6 +187,15 @@ export function DesktopLayout() {
               </p>
 
               <div className="flex items-center gap-3 flex-wrap">
+                <a
+                  href="https://qtickets.ru/event/256437"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-ghost text-sm px-5 py-3"
+                  style={{ borderColor: "rgba(249,168,212,0.8)", background: "rgba(236,72,153,0.25)", boxShadow: "0 0 18px rgba(236,72,153,0.45)" }}
+                >
+                  <span>🎟️</span><span>Купить билет на Student Party</span>
+                </a>
                 <button
                   onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "start" })}
                   className="btn-ghost text-sm px-5 py-3"
